@@ -104,6 +104,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
     <li><a href="professor.html" id="lnk-prof">Conheça o Professor</a></li>
     <li><a href="cursos.html" id="lnk-cur">Meus Cursos</a></li>
     <li><a href="desafios.html" id="lnk-des">Os Desafios</a></li>
+    <li><a href="blog.html" id="lnk-blog">Blog</a></li>
     <li><a href="depoimentos.html" id="lnk-dep">O que nossos alunos dizem</a></li>
     <li><a href="contato.html" id="lnk-cont">Fale Conosco</a></li>
   </ul>
@@ -120,6 +121,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
   <a href="professor.html">Conheça o Professor</a>
   <a href="cursos.html">Meus Cursos</a>
   <a href="desafios.html">Os Desafios</a>
+  <a href="blog.html">Blog</a>
   <a href="depoimentos.html">O que nossos alunos dizem</a>
   <a href="contato.html">Fale Conosco</a>
   <div class="mob-social">
@@ -242,7 +244,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 <script>
 var nav=document.getElementById('mainNav'),tb=document.getElementById('topbar');
 window.addEventListener('scroll',function(){if(window.scrollY>60){nav.classList.add('scrolled');tb.style.display='none';document.body.style.paddingTop='72px';}else{nav.classList.remove('scrolled');tb.style.display='';document.body.style.paddingTop='102px';}});
-(function(){var p=location.pathname.split('/').pop()||'index.html';var m={'institucional.html':'lnk-inst','professor.html':'lnk-prof','cursos.html':'lnk-cur','desafios.html':'lnk-des','depoimentos.html':'lnk-dep','contato.html':'lnk-cont'};if(m[p]){var el=document.getElementById(m[p]);if(el)el.classList.add('active');}})();
+(function(){var p=location.pathname.split('/').pop()||'index.html';var m={'institucional.html':'lnk-inst','professor.html':'lnk-prof','cursos.html':'lnk-cur','desafios.html':'lnk-des','blog.html':'lnk-blog','depoimentos.html':'lnk-dep','contato.html':'lnk-cont'};if(m[p]){var el=document.getElementById(m[p]);if(el)el.classList.add('active');}})();
 
 var hBtn=document.getElementById('hamburgerBtn'),mMenu=document.getElementById('mobileMenu');
 if(hBtn&&mMenu){hBtn.addEventListener('click',function(){hBtn.classList.toggle('active');mMenu.classList.toggle('open');});
