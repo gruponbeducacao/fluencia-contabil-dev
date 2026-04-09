@@ -47,23 +47,19 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 /* ── HAMBURGER & MOBILE MENU ── */
-.hamburger{display:none;background:none;border:none;cursor:pointer;padding:12px;margin-left:auto;z-index:350;-webkit-tap-highlight-color:transparent;position:relative;}
-.hamburger .hb{display:block;width:26px;height:2px;background:#fff;border-radius:1px;transition:transform 0.3s cubic-bezier(.4,0,.2,1),opacity 0.2s ease;}
-.hamburger .hb:nth-child(2){margin-top:7px;}
-.hamburger .hb:nth-child(3){margin-top:7px;}
-.hamburger.active .hb:nth-child(1){transform:rotate(45deg) translate(6.5px,6.5px);}
-.hamburger.active .hb:nth-child(2){opacity:0;transform:scaleX(0);}
-.hamburger.active .hb:nth-child(3){transform:rotate(-45deg) translate(6.5px,-6.5px);}
-.mobile-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:270;opacity:0;transition:opacity 0.3s ease;}
-.mobile-overlay.show{display:block;opacity:1;}
-.mobile-menu{position:fixed;top:72px;left:0;right:0;background:#1B2A4A;z-index:280;border-bottom:3px solid #C9A84C;transform:translateY(-100%);opacity:0;transition:transform 0.35s cubic-bezier(.4,0,.2,1),opacity 0.3s ease;padding:8px 0;box-shadow:0 12px 40px rgba(0,0,0,0.3);}
-.mobile-menu.open{transform:translateY(0);opacity:1;}
-.mobile-menu a{display:block;text-decoration:none;color:rgba(255,255,255,0.85);font-size:15px;font-weight:600;padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);transition:all 0.2s;letter-spacing:0.3px;}
-.mobile-menu a:active,.mobile-menu a:hover{color:#C9A84C;background:rgba(201,168,76,0.08);padding-left:28px;}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:12px;margin-left:auto;z-index:350;-webkit-tap-highlight-color:transparent;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s ease;margin:0;}
+.hamburger span+span{margin-top:6px;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5.5px,5.5px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5.5px,-5.5px);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#1B2A4A;z-index:280;flex-direction:column;padding:12px 0;border-bottom:3px solid #C9A84C;box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.mobile-menu.active{display:flex;}
+.mobile-menu a{display:block;text-decoration:none;color:rgba(255,255,255,0.85);font-size:15px;font-weight:600;padding:15px 24px;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.2s;}
+.mobile-menu a:hover,.mobile-menu a:active{color:#C9A84C;}
 .mobile-menu .mob-social{display:flex;gap:24px;padding:12px 24px;border-top:1px solid rgba(201,168,76,0.15);margin-top:4px;}
 .mobile-menu .mob-social a{padding:10px 0;border-bottom:none;font-size:14px;}
-.mobile-menu .mob-btn{display:block;margin:12px 20px 16px;background:#C9A84C;color:#1B2A4A;padding:16px 24px;border-radius:3px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;border-bottom:none;box-shadow:0 4px 12px rgba(201,168,76,0.25);}
-.mobile-menu .mob-btn:active{background:#A68A3E;transform:scale(0.98);}
+.mobile-menu .mob-btn{display:block;margin:12px 20px 16px;background:#C9A84C;color:#1B2A4A;padding:16px 24px;border-radius:3px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;border-bottom:none;}
 
 @media(max-width:1100px){.ft-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:768px){body{padding-top:72px;}#topbar{display:none;}#mainNav{top:0;}.nav-links,.nav-social{display:none;}
@@ -146,7 +142,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
     <a href="https://www.youtube.com/@prof.viniciusferraz" target="_blank" rel="noopener" title="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .6 5.8 3 3 0 0 0 2 2.1c2 .6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg></a>
   </div>
   <a href="cursos.html#lista-espera" class="nav-btn">Lista de Espera</a>
-  <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span class="hb"></span><span class="hb"></span><span class="hb"></span></button>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Início</a>
@@ -333,14 +329,19 @@ function toggleMod(i) {
 }
 
 /* Hamburger Menu */
-var hBtn=document.getElementById('hamburgerBtn'),mMenu=document.getElementById('mobileMenu'),mOverlay=document.getElementById('mobileOverlay');
-function closeMenu(){hBtn.classList.remove('active');mMenu.classList.remove('open');if(mOverlay)mOverlay.classList.remove('show');document.body.style.overflow='';}
-function openMenu(){hBtn.classList.add('active');mMenu.classList.add('open');if(mOverlay)mOverlay.classList.add('show');document.body.style.overflow='hidden';}
-if(hBtn&&mMenu){
-hBtn.addEventListener('click',function(e){e.stopPropagation();if(mMenu.classList.contains('open')){closeMenu();}else{openMenu();}});
-mMenu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMenu);});
-if(mOverlay)mOverlay.addEventListener('click',closeMenu);
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+var hamBtn=document.getElementById('hamburgerBtn');
+var mobMenu=document.getElementById('mobileMenu');
+if(hamBtn&&mobMenu){
+  hamBtn.addEventListener('click',function(){
+    hamBtn.classList.toggle('active');
+    mobMenu.classList.toggle('active');
+  });
+  mobMenu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click',function(){
+      hamBtn.classList.remove('active');
+      mobMenu.classList.remove('active');
+    });
+  });
 }
 </script>
   </div>
