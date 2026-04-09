@@ -440,7 +440,7 @@ document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity='0';e
 <script>
 // ── LISTA DE ESPERA — GOOGLE SHEETS ─────────────────────────────────────
 // Substitua SHEET_URL pelo URL do seu Google Apps Script (veja instruções abaixo)
-var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwgvgg-6pIDGViwZxww-njtKlvCcVi7-NLZ4qmjqiJSC9NrFiZcFu1EqpPoNat0wbg/exec';
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxDC5lbaNwmRr6bbR3ECo7WgamNgEJr5MyqkHGiMe2YE07P5PVixf_NY4bIleoZe88Z/exec';
 
 function submitLista() {
   var nome  = document.getElementById('fcNome').value.trim();
@@ -458,7 +458,7 @@ function submitLista() {
 
   var data = new URLSearchParams({ nome: nome, email: email, whatsapp: wpp });
 
-  fetch(SHEET_URL, { method: 'POST', body: data })
+  fetch(SHEET_URL, { method: 'POST', body: data, mode: 'no-cors' })
     .then(function(r) { return r.text(); })
     .catch(function() { return 'ok'; }) // mesmo com erro CORS, o dado chegou
     .finally(function() {
