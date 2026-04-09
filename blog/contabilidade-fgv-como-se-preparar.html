@@ -359,7 +359,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
   <div class="newsletter-inner">
     <h2>Receba novos artigos no seu e-mail</h2>
     <p>Contabilidade para concursos, sem spam. Direto no ponto.</p>
-    <form class="newsletter-form" onsubmit="return false;">
+    <form class="newsletter-form" onsubmit="event.preventDefault();subscribeNewsletter(this);">
       <input type="email" placeholder="Seu melhor e-mail" required>
       <button type="submit">Inscrever</button>
     </form>

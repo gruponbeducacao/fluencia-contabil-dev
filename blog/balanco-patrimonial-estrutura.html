@@ -771,6 +771,37 @@ document.querySelectorAll('#mobile-menu a').forEach(function(link) {
     document.getElementById('mobile-menu').classList.remove('active');
   });
 });
+
+/* Newsletter — MailerLite */
+function subscribeNewsletter(formEl) {
+  var emailInput = formEl.querySelector('input[type="email"]');
+  var btn = formEl.querySelector('button');
+  var email = emailInput.value.trim();
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { alert('Por favor, insira um e-mail válido.'); return; }
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  fetch('https://connect.mailerlite.com/api/subscribers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiY2M5MzM2OTVhYTUxYTkwNDk3OThhNDVlODcxZTBkZjBiODU5MTM3MzkzMDMwNmQzMTk0NTNiZTNhOTJmNTVhMWU0N2Y5MDFkNDZhMzJmZjgiLCJpYXQiOjE3NzU3NzI2MzQuOTk0OTI3LCJuYmYiOjE3NzU3NzI2MzQuOTk0OTI5LCJleHAiOjQ5MzE0NDYyMzQuOTkwMjczLCJzdWIiOiIyMjc2MzQ2Iiwic2NvcGVzIjpbXX0.gIZN4j9f9NLS1JwZewBDulJ2VX-Is7Xg5XUrvurnLNYwEBVQQCqt2bN2SFQ6xhdGQYfeJdCrbn-JsvhsDRN64Y-UkJ-f19q68YX0rAqkccq6jO8PVLklyc_v7nO3KKeTTOdDMk3JAx0pkXcACIx-to7dkCeWaAInh4kfPLDcdsbLu4AuKs9KoH7DzCFzQj58ExnQu2crBQ-ATN1LTUJ-N8pKGT3HTXocEp6H16NFNZpS-e6PCDvx-HmzwDKj2ifEUELyc2wJ63zjeES3mAaAC3Aa6dttWFCCclef575Lab9x6_uPayBiJ5IzjkzOcXoGFYdaLvM6QOeOPj5jCIhfZkEt5IOpAzo7YueL8LbArG56NXprgWNJ6o8bTzOjLoxMivjekXknn9umGj4BVNPsttapWqY1EfCKrIBAVM7XYDL3nYf80wgbE02IBtx1yCAvi7kdCdG7SOdLMJKd7GQZc2oKN0eaXJZhuMXfMw53Eu4CASDPqLytv4hi_EHcBwfVbakJ7wkJv7vcQFi845UDb5ckOtD5Sh3yt4S28RhQrHItH5QxVeq06d3gBRnhfYHyyw0Twzbfc-MXRzmLLjDAdUoISs1QcO8FiQcB6qgg8I0NTXoyzCCywVfHAyFeisWwENWCrlkMXYPRdpXOZfCXMEfrBBm02RHSRVjy2a4uQYU'
+    },
+    body: JSON.stringify({ email: email, groups: ['184310615785866461'] })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.data && data.data.email) {
+      formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
+    } else {
+      btn.textContent = 'Quero receber';
+      btn.disabled = false;
+      alert('Erro ao inscrever. Tente novamente.');
+    }
+  })
+  .catch(function() {
+    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
+  });
+}
 </script>
 </body>
 </html>
