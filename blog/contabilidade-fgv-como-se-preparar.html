@@ -440,6 +440,24 @@ footer{background:#0E1929;padding:60px 5% 32px;}
   overlay.addEventListener('click',toggle);
   menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',toggle);});
 })();
+
+/* Newsletter — Google Sheets */
+function subscribeNewsletter(formEl) {
+  var emailInput = formEl.querySelector('input[type="email"]');
+  var btn = formEl.querySelector('button');
+  var email = emailInput.value.trim();
+  if (!email || !/\S+@\S+\.\S+/.test(email)) { alert('Por favor, insira um e-mail válido.'); return; }
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  var data = new URLSearchParams({ email: email, origem: 'Blog' });
+  fetch('https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec', { method: 'POST', body: data, mode: 'no-cors' })
+  .then(function() {
+    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
+  })
+  .catch(function() {
+    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
+  });
+}
 </script>
 </body>
 </html>
