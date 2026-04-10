@@ -75,7 +75,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 .mobile-menu .mob-btn{display:block;margin:12px 20px 16px;background:#C9A84C;color:#1B2A4A;padding:16px 24px;border-radius:3px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;border-bottom:none;}
 
 @media(max-width:1100px){.ft-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:768px){body{padding-top:72px;}#topbar{display:none;}#mainNav{top:0;}.nav-links,.nav-social{display:none;}
+@media(max-width:768px){body{padding-top:64px;}#topbar{display:none;}#mainNav{top:0;}.nav-links,.nav-social{display:none;}
   .hamburger{display:flex!important;}
   /* Mobile UX Enhancements */
   body{-webkit-text-size-adjust:100%;}
@@ -459,7 +459,7 @@ if(hamBtn&&mobMenu){
 <script>
 var nav=document.getElementById('mainNav'),tb=document.getElementById('topbar');
 window.addEventListener('scroll',function(){
-  if(window.scrollY>60){nav.classList.add('scrolled');if(tb)tb.style.display='none';document.body.style.paddingTop='72px';}
+  if(window.scrollY>60){nav.classList.add('scrolled');if(tb)tb.style.display='none';document.body.style.paddingTop='64px';}
   else{nav.classList.remove('scrolled');if(tb)tb.style.display='';document.body.style.paddingTop='102px';}
 });
 var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='translateY(0)';}});},{threshold:0.07});
