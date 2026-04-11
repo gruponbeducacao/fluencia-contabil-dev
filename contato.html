@@ -94,6 +94,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 
 </style>
 <style>
+.canais-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px;}
 .contato-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:72px;align-items:start;}
 .canal-card{display:flex;gap:18px;align-items:flex-start;padding:20px;border:1.5px solid rgba(27,42,74,0.08);border-radius:4px;margin-bottom:12px;transition:all 0.25s;text-decoration:none;color:inherit;}
 .canal-card:hover{border-color:var(--dourado);background:var(--cream);transform:translateX(4px);}
@@ -138,7 +139,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 .fg textarea{resize:vertical;min-height:110px;}
 .form-ok{display:none;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);padding:18px;border-radius:4px;font-size:14px;color:var(--azul);font-weight:600;text-align:center;margin-top:16px;}
 @media(max-width:1100px){.contato-grid{grid-template-columns:1fr;gap:48px;}}
-@media(max-width:768px){.form-row{grid-template-columns:1fr;}.contato-grid{grid-template-columns:1fr;gap:32px;}.ea-chat{height:260px;}.canal-card{flex-direction:column;gap:12px;}.chat-wrap h3{font-size:18px;}.ea-input-area{padding:10px 12px;}.fg input,.fg select,.fg textarea{font-size:16px;padding:14px 14px;}}
+@media(max-width:768px){.contato-hero{padding:50px 20px!important;}.form-row{grid-template-columns:1fr;}.contato-grid{grid-template-columns:1fr;gap:32px;}.canais-grid{grid-template-columns:1fr;gap:16px;margin-bottom:40px;}.ea-chat{height:260px;}.canal-card{flex-direction:column;gap:12px;}.chat-wrap h3{font-size:18px;}.ea-input-area{padding:10px 12px;}.fg input,.fg select,.fg textarea{font-size:16px;padding:14px 14px;}}
 </style>
 </head>
 <body>
@@ -171,7 +172,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
   <a href="cursos.html#lista-espera" class="mob-btn">Lista de Espera</a>
 </div>
 
-<section style="background:var(--azul);padding:80px 5%;position:relative;overflow:hidden;">
+<section class="contato-hero" style="background:var(--azul);padding:80px 5%;position:relative;overflow:hidden;">
   <div class="bg-grid" style="position:absolute;inset:0;"></div>
   <div style="max-width:1200px;margin-inline:auto;position:relative;z-index:2;">
     <span class="lbl">Fale Conosco</span>
@@ -183,7 +184,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 <section style="padding:80px 5%;background:var(--branco);">
   <div class="inner" style="max-width:1000px;">
     <!-- CANAIS -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px;">
+    <div class="canais-grid">
       <a href="https://www.instagram.com/prof.viniciusferraz" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 24px;border:1.5px solid rgba(27,42,74,0.1);border-radius:6px;transition:all 0.25s;color:inherit;" onmouseover="this.style.borderColor='var(--dourado)';this.style.background='var(--cream)'" onmouseout="this.style.borderColor='rgba(27,42,74,0.1)';this.style.background='transparent'">
         <div style="width:52px;height:52px;background:var(--azul);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12c0-3.2 0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.2c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1.0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 4.9.2 4.4 2.6 6.8 7 7C8.3 24 8.7 24 12 24c3.3 0 3.7 0 4.9-.1 4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9 0-3.3 0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4A6.2 6.2 0 0 0 12 5.8zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
