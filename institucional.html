@@ -105,6 +105,11 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 .stat-val{font-size:38px;font-weight:900;color:var(--dourado);line-height:1;letter-spacing:-2px;}
 .stat-lbl{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:4px;}
 .pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px;}
+.premissa-bloco{background:var(--azul);border-radius:6px;padding:48px 44px;margin-top:40px;margin-bottom:56px;text-align:center;position:relative;overflow:hidden;}
+.premissa-bloco::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);background-size:60px 60px;}
+.premissa-bloco p{font-size:20px;line-height:1.7;color:rgba(255,255,255,0.75);font-family:'Source Serif 4',serif;font-style:italic;max-width:700px;margin-inline:auto;position:relative;z-index:2;}
+.premissa-bloco strong{color:#C9A84C;font-weight:700;font-style:normal;}
+.pilar-group-label{font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#999;margin-bottom:14px;display:block;}
 .pilar-card{background:var(--branco);border-top:3px solid var(--dourado);padding:30px 22px;transition:all 0.3s;}
 .pilar-card:hover{box-shadow:0 8px 32px rgba(27,42,74,0.1);transform:translateY(-3px);}
 .pilar-n{font-size:40px;font-weight:900;color:rgba(200,168,75,0.15);line-height:1;margin-bottom:14px;letter-spacing:-2px;}
@@ -243,11 +248,20 @@ footer{background:#0E1929;padding:60px 5% 32px;}
     <span class="lbl">Filosofia e Método</span><div class="bar"></div>
     <h2 class="h2">Quatro pilares. Uma premissa central.</h2>
     <p class="body-t" style="max-width:600px;">Tudo começa com a premissa do idioma. O resto é consequência lógica de enxergar a contabilidade como ela realmente é: um sistema de comunicação com estrutura, gramática e vocabulário próprios.</p>
-    <div class="pilares-grid">
-      <div class="pilar-card reveal"><div class="pilar-n">01</div><h4>A premissa do idioma</h4><p>Débitos e créditos são códigos. Partidas dobradas é a gramática. Demonstrações são textos. Aprenda o idioma e leia qualquer questão.</p></div>
+
+    <div class="premissa-bloco reveal">
+      <p>A contabilidade é uma <strong>linguagem</strong>. Débitos e créditos são seus <strong>códigos</strong>. Partidas dobradas, sua <strong>gramática</strong>. Quem aprende o idioma <strong>lê qualquer questão</strong>.</p>
+    </div>
+
+    <span class="pilar-group-label">Como ensinamos</span>
+    <div class="pilares-grid" style="margin-top:0;">
+      <div class="pilar-card reveal"><div class="pilar-n">01</div><h4>A premissa do idioma</h4><p>Antes de qualquer norma, você aprende o idioma. Débitos e créditos são códigos. Partidas dobradas é a gramática. Quem domina o idioma não decora — lê.</p></div>
       <div class="pilar-card reveal"><div class="pilar-n">02</div><h4>Lógica antes da regra</h4><p>Nenhuma norma é apresentada sem que o aluno entenda primeiro por que ela existe. A regra é consequência da lógica — nunca ponto de partida.</p></div>
-      <div class="pilar-card reveal"><div class="pilar-n">03</div><h4>Fluência real</h4><p>O objetivo não é passar decorando. É ser fluente — capaz de raciocinar, interpretar e responder com segurança qualquer questão, de qualquer banca.</p></div>
-      <div class="pilar-card reveal"><div class="pilar-n">04</div><h4>Foco em banca</h4><p>CEBRASPE, FGV, VUNESP e FCC têm padrões distintos. O curso mapeia o que cada uma cobra e onde estão as armadilhas.</p></div>
+    </div>
+    <span class="pilar-group-label" style="margin-top:24px;">O que você ganha</span>
+    <div class="pilares-grid" style="margin-top:0;">
+      <div class="pilar-card reveal"><div class="pilar-n">03</div><h4>Fluência real</h4><p>Fluência é quando você entra numa questão sem ter visto aquele enunciado antes — e resolve. Não por sorte. Por raciocínio contábil construído desde a base.</p></div>
+      <div class="pilar-card reveal"><div class="pilar-n">04</div><h4>Foco em banca</h4><p>CEBRASPE, FGV, VUNESP e FCC têm padrões distintos. O curso mapeia o que cada uma cobra, como cobra e onde estão as armadilhas.</p></div>
     </div>
   </div>
 </section>
