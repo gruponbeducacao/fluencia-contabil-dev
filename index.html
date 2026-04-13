@@ -113,9 +113,9 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 #hero{min-height:92vh;background:var(--azul);display:grid;grid-template-columns:1fr 420px;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;}
 .hero-glow{position:absolute;top:-150px;left:30%;width:600px;height:600px;background:radial-gradient(circle,rgba(61,90,153,0.35) 0%,transparent 65%);pointer-events:none;}
-.hero-left{padding:80px 5%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
-.hero-logo-wrap{position:absolute;top:45%;left:35%;transform:translate(-50%,-50%);z-index:1;pointer-events:none;}
-.hero-logo{width:clamp(280px,32vw,500px);height:auto;opacity:0.2;-webkit-mask-image:radial-gradient(ellipse 55% 55% at center,#000 25%,transparent 70%);mask-image:radial-gradient(ellipse 55% 55% at center,#000 25%,transparent 70%);}
+.hero-left{padding:40px 5% 80px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:2;}
+.hero-logo-wrap{flex:1;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.hero-logo{width:clamp(220px,24vw,380px);height:auto;opacity:0.18;-webkit-mask-image:radial-gradient(ellipse 60% 60% at center,#000 30%,transparent 72%);mask-image:radial-gradient(ellipse 60% 60% at center,#000 30%,transparent 72%);}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);padding:7px 14px;border-radius:2px;margin-bottom:32px;width:fit-content;}
 .hero-badge-dot{width:6px;height:6px;background:var(--dourado);border-radius:50%;animation:blink 2s infinite;}
 .hero-badge span{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dourado);}
@@ -233,10 +233,10 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 <section id="hero">
   <div class="hero-bg bg-grid"></div>
   <div class="hero-glow"></div>
-  <div class="hero-logo-wrap">
-    <img src="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.png" alt="" class="hero-logo" loading="eager">
-  </div>
   <div class="hero-left">
+    <div class="hero-logo-wrap">
+      <img src="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.png" alt="" class="hero-logo" loading="eager">
+    </div>
     <div class="hero-badge"><div class="hero-badge-dot"></div><span>Lançamento — Junho de 2026</span></div>
     <h1 class="hero-title">Curso completo de<br><em>Contabilidade</em><br>para concursos.</h1>
     <p class="hero-sub">Do zero ao avançado: aulas em vídeo, aulas em PDF completos, questões comentadas e material de apoio para concursos nas áreas fiscal, controle, para cargos de contadores e qualquer concurso que tenha contabilidade geral e/ou avançada. <strong>Formação completa com o Prof. Vinícius Ferraz.</strong></p>
