@@ -15,7 +15,12 @@ jobs:
           fetch-depth: 0
 
       - name: Replace CNAME for dev domain
-        run: echo "dev.fluenciacontabil.com.br" > CNAME
+        run: |
+          echo "dev.fluenciacontabil.com.br" > CNAME
+          git config user.email "vfneves94@gmail.com"
+          git config user.name "vfneves94"
+          git add CNAME
+          git commit -m "Set dev CNAME" --allow-empty
 
       - name: Setup SSH key
         run: |
@@ -26,7 +31,5 @@ jobs:
 
       - name: Push to dev repo via SSH
         run: |
-          git config user.email "vfneves94@gmail.com"
-          git config user.name "vfneves94"
           git remote add dev-target git@github.com:gruponbeducacao/fluencia-contabil-dev.git
           GIT_SSH_COMMAND="ssh -i ~/.ssh/deploy_key" git push dev-target HEAD:main --force
