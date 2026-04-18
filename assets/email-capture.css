@@ -1,0 +1,399 @@
+/* Fluência Contábil — Email Capture widgets
+   Exit-intent modal + Sticky bar + Share buttons
+   Prefix: .fc-ec-*  (evita colisão com estilos existentes) */
+
+/* ================= BASE ================= */
+.fc-ec-hidden { display: none !important; }
+
+.fc-ec-overlay,
+.fc-ec-sticky,
+.fc-ec-share {
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+}
+.fc-ec-overlay *,
+.fc-ec-sticky *,
+.fc-ec-share * { box-sizing: border-box; }
+
+/* ================= EXIT-INTENT MODAL ================= */
+.fc-ec-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 25, 41, 0.78);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+.fc-ec-overlay.fc-ec-show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fc-ec-modal {
+  position: relative;
+  background: #FBF6E9;
+  color: #1A1A1A;
+  width: 100%;
+  max-width: 480px;
+  padding: 48px 40px 40px;
+  border-top: 4px solid #C8A84B;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.35s ease;
+}
+.fc-ec-overlay.fc-ec-show .fc-ec-modal {
+  transform: translateY(0) scale(1);
+}
+
+.fc-ec-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: #1B2A4A;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.fc-ec-close:hover {
+  background: rgba(27, 42, 74, 0.08);
+  color: #C0392B;
+}
+
+.fc-ec-eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #C8A84B;
+  margin-bottom: 10px;
+}
+.fc-ec-bar {
+  width: 44px;
+  height: 3px;
+  background: #C8A84B;
+  margin-bottom: 22px;
+}
+.fc-ec-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #1B2A4A;
+  line-height: 1.15;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+}
+.fc-ec-desc {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #444;
+  margin-bottom: 22px;
+}
+
+.fc-ec-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.fc-ec-form input[type="email"] {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  border: 1.5px solid #d9d1b4;
+  background: #fff;
+  color: #1A1A1A;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.fc-ec-form input[type="email"]:focus {
+  border-color: #C8A84B;
+}
+.fc-ec-form button {
+  flex: 0 0 auto;
+  padding: 14px 22px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #C0392B;
+  border: 2px solid #C0392B;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+.fc-ec-form button:hover {
+  background: #922B1F;
+  border-color: #922B1F;
+}
+.fc-ec-form button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.fc-ec-fineprint {
+  margin-top: 14px;
+  font-size: 11px;
+  color: #777;
+  letter-spacing: 0.3px;
+}
+
+.fc-ec-success {
+  text-align: center;
+  padding: 8px 0;
+}
+.fc-ec-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #C8A84B;
+  color: #1B2A4A;
+  font-size: 32px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+.fc-ec-success-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1B2A4A;
+  margin-bottom: 8px;
+}
+.fc-ec-success-desc {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ================= STICKY BAR ================= */
+.fc-ec-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9500;
+  background: #1B2A4A;
+  color: #fff;
+  border-top: 3px solid #C8A84B;
+  padding: 14px 5% 14px 5%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transform: translateY(120%);
+  transition: transform 0.4s ease;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.25);
+}
+.fc-ec-sticky.fc-ec-show {
+  transform: translateY(0);
+}
+
+.fc-ec-sticky-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
+}
+.fc-ec-sticky-text strong {
+  color: #C8A84B;
+  font-weight: 800;
+}
+
+.fc-ec-sticky-form {
+  display: flex;
+  gap: 8px;
+  flex: 0 1 460px;
+}
+.fc-ec-sticky-form input[type="email"] {
+  flex: 1 1 200px;
+  min-width: 0;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.fc-ec-sticky-form input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+.fc-ec-sticky-form input[type="email"]:focus {
+  border-color: #C8A84B;
+  background: rgba(255, 255, 255, 0.12);
+}
+.fc-ec-sticky-form button {
+  flex: 0 0 auto;
+  padding: 11px 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #C0392B;
+  border: 2px solid #C0392B;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-family: 'Montserrat', sans-serif;
+  white-space: nowrap;
+}
+.fc-ec-sticky-form button:hover {
+  background: #922B1F;
+  border-color: #922B1F;
+}
+.fc-ec-sticky-form button:disabled { opacity: 0.7; cursor: wait; }
+
+.fc-ec-sticky-close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s;
+}
+.fc-ec-sticky-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.fc-ec-sticky-success {
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #C8A84B;
+}
+
+/* ================= SHARE BUTTONS (blog only) ================= */
+.fc-ec-share {
+  max-width: 760px;
+  margin: 48px auto 16px;
+  padding: 32px 32px 28px;
+  background: #FBF6E9;
+  border-left: 3px solid #C8A84B;
+}
+.fc-ec-share-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #C8A84B;
+  margin-bottom: 14px;
+}
+.fc-ec-share-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1B2A4A;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+.fc-ec-share-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.fc-ec-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  color: #fff;
+  background: #1B2A4A;
+  border: 2px solid #1B2A4A;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1;
+}
+.fc-ec-share-btn:hover {
+  background: #2A3F6F;
+  border-color: #2A3F6F;
+  transform: translateY(-1px);
+}
+.fc-ec-share-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.fc-ec-share-btn.fc-ec-wa { background: #25D366; border-color: #25D366; color: #fff; }
+.fc-ec-share-btn.fc-ec-wa:hover { background: #1DAE51; border-color: #1DAE51; }
+.fc-ec-share-btn.fc-ec-x { background: #000; border-color: #000; }
+.fc-ec-share-btn.fc-ec-x:hover { background: #222; border-color: #222; }
+.fc-ec-share-btn.fc-ec-in { background: #0A66C2; border-color: #0A66C2; }
+.fc-ec-share-btn.fc-ec-in:hover { background: #084E96; border-color: #084E96; }
+.fc-ec-share-btn.fc-ec-copy { background: transparent; color: #1B2A4A; }
+.fc-ec-share-btn.fc-ec-copy:hover { background: #1B2A4A; color: #fff; }
+.fc-ec-share-btn.fc-ec-copied { background: #C8A84B !important; border-color: #C8A84B !important; color: #1B2A4A !important; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 720px) {
+  .fc-ec-modal { padding: 40px 24px 28px; max-width: 100%; }
+  .fc-ec-title { font-size: 20px; }
+  .fc-ec-desc { font-size: 14px; }
+
+  .fc-ec-sticky {
+    flex-wrap: wrap;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .fc-ec-sticky-text {
+    flex: 1 1 100%;
+    font-size: 13px;
+    padding-right: 32px;
+  }
+  .fc-ec-sticky-form {
+    flex: 1 1 100%;
+    order: 2;
+  }
+  .fc-ec-sticky-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .fc-ec-share { padding: 24px 20px; margin: 36px 20px 16px; }
+  .fc-ec-share-btns { gap: 8px; }
+  .fc-ec-share-btn { padding: 9px 12px; font-size: 11px; }
+  .fc-ec-share-btn span { display: none; }
+  .fc-ec-share-btn.fc-ec-copy span.fc-ec-copy-feedback { display: inline; }
+}
