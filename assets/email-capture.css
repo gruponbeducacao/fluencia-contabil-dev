@@ -365,6 +365,218 @@
 .fc-ec-share-btn.fc-ec-copy:hover { background: #1B2A4A; color: #fff; }
 .fc-ec-share-btn.fc-ec-copied { background: #C8A84B !important; border-color: #C8A84B !important; color: #1B2A4A !important; }
 
+/* ================= INLINE CTA (blog posts) ================= */
+/* Reset defensivo: o CTA é injetado dentro de .article-body/.article-content,
+   cujos estilos podem sobrescrever strong/em/a. Forçamos cores próprias. */
+.fc-ec-inline-cta,
+.fc-ec-inline-cta * {
+  font-family: 'Montserrat', sans-serif;
+}
+.fc-ec-inline-cta strong {
+  color: #C8A84B !important;
+  font-weight: 700;
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  text-decoration: none !important;
+}
+.fc-ec-inline-cta em,
+.fc-ec-inline-cta i {
+  color: #C8A84B !important;
+  font-style: italic;
+  background: none !important;
+  text-decoration: none !important;
+}
+.fc-ec-inline-cta a {
+  color: #C8A84B !important;
+  text-decoration: underline !important;
+  background: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.fc-ec-inline-cta p {
+  margin: 0 0 20px !important;
+  padding: 0 !important;
+  background: none !important;
+  border: 0 !important;
+}
+
+.fc-ec-inline-cta {
+  margin: 44px 0;
+  padding: 36px 34px;
+  background: linear-gradient(135deg, #1B2A4A 0%, #2A3F6F 100%);
+  color: #fff;
+  border-left: 3px solid #C8A84B;
+  position: relative;
+  overflow: hidden;
+}
+.fc-ec-inline-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.fc-ec-inline-cta > * { position: relative; z-index: 1; }
+.fc-ec-inline-cta .fc-ec-eyebrow { color: #C8A84B; margin-bottom: 8px; }
+.fc-ec-inline-cta .fc-ec-bar { margin-bottom: 18px; }
+.fc-ec-inline-cta .fc-ec-title {
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.fc-ec-inline-cta .fc-ec-desc {
+  color: rgba(255,255,255,0.72);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.fc-ec-inline-cta .fc-ec-form input[type="email"] {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.18);
+  color: #fff;
+}
+.fc-ec-inline-cta .fc-ec-form input[type="email"]::placeholder { color: rgba(255,255,255,0.45); }
+.fc-ec-inline-cta .fc-ec-form input[type="email"]:focus {
+  border-color: #C8A84B;
+  background: rgba(255,255,255,0.1);
+}
+.fc-ec-inline-cta .fc-ec-fineprint { color: rgba(255,255,255,0.5); }
+
+/* ================= REFERRAL SUCCESS PANEL ================= */
+.fc-ec-referral { text-align: center; }
+.fc-ec-referral-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #C8A84B;
+  color: #1B2A4A;
+  font-size: 32px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.fc-ec-referral-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1B2A4A;
+  margin-bottom: 6px;
+}
+.fc-ec-referral-sub {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.fc-ec-referral-link {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.fc-ec-referral-link input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 11px 13px;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  border: 1.5px solid #d9d1b4;
+  background: #fff;
+  color: #1A1A1A;
+  border-radius: 2px;
+  outline: none;
+}
+.fc-ec-referral-copy {
+  flex: 0 0 auto;
+  padding: 11px 16px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: #1B2A4A;
+  border: 2px solid #1B2A4A;
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+}
+.fc-ec-referral-copy:hover { background: #2A3F6F; border-color: #2A3F6F; }
+.fc-ec-referral-copy.fc-ec-copied {
+  background: #C8A84B !important;
+  border-color: #C8A84B !important;
+  color: #1B2A4A !important;
+}
+.fc-ec-referral-share {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.fc-ec-referral-share .fc-ec-share-btn { padding: 9px 14px; font-size: 11px; }
+
+/* Referral anexado ao #formSuccess da lista de espera (não substitui,
+   vem DEPOIS do botão WhatsApp, separado por linha tracejada) */
+.fc-ec-referral-footer {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(27, 42, 74, 0.18);
+  font-family: 'Montserrat', sans-serif;
+}
+.fc-ec-referral-footer .fc-ec-referral-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  margin: 0 auto 12px;
+}
+.fc-ec-referral-footer .fc-ec-referral-title {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.fc-ec-referral-footer .fc-ec-referral-sub {
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+/* Referral no CTA inline (fundo escuro) */
+.fc-ec-inline-cta .fc-ec-referral-title { color: #fff; }
+.fc-ec-inline-cta .fc-ec-referral-sub { color: rgba(255,255,255,0.75); }
+.fc-ec-inline-cta .fc-ec-referral-link input {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.2);
+  color: #fff;
+}
+.fc-ec-inline-cta .fc-ec-referral-copy {
+  background: #C8A84B;
+  border-color: #C8A84B;
+  color: #1B2A4A;
+}
+.fc-ec-inline-cta .fc-ec-referral-copy:hover {
+  background: #A68A3E;
+  border-color: #A68A3E;
+  color: #fff;
+}
+
+/* Referral na sticky bar (row, compact) */
+.fc-ec-sticky .fc-ec-referral {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  width: 100%;
+}
+.fc-ec-sticky .fc-ec-referral-icon { width: 36px; height: 36px; font-size: 20px; margin: 0; flex-shrink: 0; }
+.fc-ec-sticky .fc-ec-referral-text { flex: 1 1 auto; min-width: 0; }
+.fc-ec-sticky .fc-ec-referral-title { color: #fff; font-size: 13px; margin: 0; line-height: 1.25; }
+.fc-ec-sticky .fc-ec-referral-sub { color: rgba(255,255,255,0.72); font-size: 12px; margin: 2px 0 0; font-family: inherit; }
+.fc-ec-sticky .fc-ec-referral-link { margin: 0; flex: 0 0 300px; }
+.fc-ec-sticky .fc-ec-referral-link input { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); color: #fff; font-size: 11px; }
+.fc-ec-sticky .fc-ec-referral-share { display: none; }
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 720px) {
   .fc-ec-modal { padding: 40px 24px 28px; max-width: 100%; }
@@ -396,4 +608,17 @@
   .fc-ec-share-btn { padding: 9px 12px; font-size: 11px; }
   .fc-ec-share-btn span { display: none; }
   .fc-ec-share-btn.fc-ec-copy span.fc-ec-copy-feedback { display: inline; }
+
+  .fc-ec-inline-cta { padding: 28px 22px; margin: 36px 0; }
+  .fc-ec-inline-cta .fc-ec-title { font-size: 19px; }
+  .fc-ec-inline-cta .fc-ec-desc { font-size: 13px; }
+
+  .fc-ec-referral-title { font-size: 18px; }
+  .fc-ec-referral-link { flex-wrap: wrap; }
+  .fc-ec-referral-link input { flex: 1 1 100%; }
+  .fc-ec-referral-copy { flex: 1 1 100%; }
+
+  .fc-ec-sticky .fc-ec-referral { flex-wrap: wrap; gap: 10px; }
+  .fc-ec-sticky .fc-ec-referral-text { flex: 1 1 calc(100% - 50px); }
+  .fc-ec-sticky .fc-ec-referral-link { flex: 1 1 100%; order: 3; }
 }
