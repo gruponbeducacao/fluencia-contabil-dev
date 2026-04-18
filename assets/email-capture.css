@@ -519,6 +519,36 @@
 }
 .fc-ec-referral-share .fc-ec-share-btn { padding: 9px 14px; font-size: 11px; }
 
+/* Botão "Entrar no grupo WhatsApp" dentro do painel de referral */
+.fc-ec-wa-group {
+  display: inline-block;
+  margin: 8px 0 6px;
+  padding: 13px 28px;
+  background: #25D366;
+  color: #fff !important;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-decoration: none !important;
+  border-radius: 3px;
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+.fc-ec-wa-group:hover {
+  background: #1DAE51;
+  transform: translateY(-1px);
+}
+.fc-ec-referral-divider {
+  height: 1px;
+  background: rgba(27,42,74,0.1);
+  margin: 20px auto;
+  max-width: 280px;
+}
+/* Quando o painel está num fundo escuro (CTA inline), ajusta o divider */
+.fc-ec-inline-cta .fc-ec-referral-divider {
+  background: rgba(255,255,255,0.15);
+}
+
 /* Referral anexado ao #formSuccess da lista de espera (não substitui,
    vem DEPOIS do botão WhatsApp, separado por linha tracejada) */
 .fc-ec-referral-footer {

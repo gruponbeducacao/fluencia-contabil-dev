@@ -18,6 +18,15 @@
 
   var REF_SALT = 'fc-ref-v1';
   var SHARE_BASE = 'https://fluenciacontabil.com.br/';
+  var WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/KWIP2oAR7KgCSAPW1Lqgtm?mode=gi_t';
+
+  // Posts que recebem o botão "Entrar no grupo WhatsApp" no success do CTA inline.
+  // Rollout gradual: começa só no Balanço Patrimonial; se aprovado, expando.
+  var CTA_WHATSAPP_GROUP_SLUGS = ['balanco-patrimonial-estrutura'];
+  function ctaShowsWhatsAppGroup() {
+    var p = window.location.pathname.toLowerCase();
+    return CTA_WHATSAPP_GROUP_SLUGS.some(function (s) { return p.indexOf(s) !== -1; });
+  }
 
   var COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 dias
   var ARM_DELAY_MS = 15000;   // tempo mínimo na página antes de armar exit-intent (desktop)
@@ -105,6 +114,7 @@
   function renderReferralPanel(container, email, opts) {
     opts = opts || {};
     var compact = !!opts.compact;
+    var waGroupHref = opts.waGroupHref || null;
     emailToRefCode(email).then(function (code) {
       safeLocalSet(KEYS.myRef, code);
       var url = buildShareURL(code);
@@ -114,6 +124,10 @@
       var xt = 'https://twitter.com/intent/tweet?text=' + encMsg + '&url=' + encURL;
       var ln = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encURL;
 
+      var waGroupBlock = waGroupHref
+        ? '<a class="fc-ec-wa-group" href="' + waGroupHref + '" target="_blank" rel="noopener">&#128172; Entrar no grupo do WhatsApp</a>'
+        : '';
+
       var html;
       if (compact) {
         // Layout horizontal pra sticky bar
@@ -121,8 +135,8 @@
           + '<div class="fc-ec-referral">'
           +   '<div class="fc-ec-referral-icon">&#10003;</div>'
           +   '<div class="fc-ec-referral-text">'
-          +     '<div class="fc-ec-referral-title">Inscrito! Compartilhe e suba na fila.</div>'
-          +     '<div class="fc-ec-referral-sub">Cada amigo que entrar com seu link te aproxima das primeiras vagas.</div>'
+          +     '<div class="fc-ec-referral-title">Inscrito(a)! Compartilhe e suba na fila.</div>'
+          +     '<div class="fc-ec-referral-sub">Cada amigo(a) que entrar com seu link te aproxima das primeiras vagas.</div>'
           +   '</div>'
           +   '<div class="fc-ec-referral-link">'
           +     '<input type="text" readonly value="' + url + '">'
@@ -134,7 +148,13 @@
           + '<div class="fc-ec-referral">'
           +   '<div class="fc-ec-referral-icon">&#10003;</div>'
           +   '<div class="fc-ec-referral-title">Inscrição confirmada!</div>'
-          +   '<div class="fc-ec-referral-sub">Compartilhe o link abaixo com um amigo concurseiro. Cada inscrição pelo seu link te aproxima das primeiras vagas quando o curso abrir.</div>'
+          +   (waGroupHref
+              ? '<div class="fc-ec-referral-sub">Participe do grupo exclusivo dos inscritos e fique por dentro de tudo em primeira mão:</div>'
+                + waGroupBlock
+                + '<div class="fc-ec-referral-divider"></div>'
+                + '<div class="fc-ec-referral-sub">Quer subir na fila? Compartilhe o link com um(a) amigo(a) concurseiro(a) — cada inscrição pelo seu link te aproxima das primeiras vagas quando o curso abrir.</div>'
+              : '<div class="fc-ec-referral-sub">Compartilhe o link abaixo com um(a) amigo(a) concurseiro(a). Cada inscrição pelo seu link te aproxima das primeiras vagas quando o curso abrir.</div>'
+            )
           +   '<div class="fc-ec-referral-link">'
           +     '<input type="text" readonly value="' + url + '">'
           +     '<button type="button" class="fc-ec-referral-copy">Copiar</button>'
@@ -545,7 +565,8 @@
       btn.textContent = 'Enviando...';
       submitEmail(email, 'blog_inline_cta').finally(function () {
         markSubscribed();
-        renderReferralPanel(body, email);
+        var opts = ctaShowsWhatsAppGroup() ? { waGroupHref: WHATSAPP_GROUP_URL } : {};
+        renderReferralPanel(body, email, opts);
         hideStickyIfAny();
       });
     });
