@@ -519,6 +519,29 @@
 }
 .fc-ec-referral-share .fc-ec-share-btn { padding: 9px 14px; font-size: 11px; }
 
+/* Referral anexado ao #formSuccess da lista de espera (não substitui,
+   vem DEPOIS do botão WhatsApp, separado por linha tracejada) */
+.fc-ec-referral-footer {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(27, 42, 74, 0.18);
+  font-family: 'Montserrat', sans-serif;
+}
+.fc-ec-referral-footer .fc-ec-referral-icon {
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  margin: 0 auto 12px;
+}
+.fc-ec-referral-footer .fc-ec-referral-title {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.fc-ec-referral-footer .fc-ec-referral-sub {
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
 /* Referral no CTA inline (fundo escuro) */
 .fc-ec-inline-cta .fc-ec-referral-title { color: #fff; }
 .fc-ec-inline-cta .fc-ec-referral-sub { color: rgba(255,255,255,0.75); }

@@ -551,11 +551,92 @@
     });
   }
 
+  /* ================= INTERCEPTAÇÕES DE FORMS EXISTENTES ================= */
+
+  // Lista de espera (cursos.html):
+  // Fluxo atual: submitLista() → esconde #formEspera, mostra #formSuccess
+  // que JÁ TEM o botão do grupo WhatsApp (crítico, não pode perder).
+  // Estratégia: observer que, quando #formSuccess fica visible, ANEXA o
+  // painel de referral ao final, sem tocar no conteúdo existente.
+  function initListaEsperaEnhancement() {
+    var success = document.getElementById('formSuccess');
+    var emailInput = document.getElementById('fcEmail');
+    if (!success || !emailInput) return;
+
+    function maybeAppendReferral() {
+      if (success.dataset.fcEcReferralAdded) return;
+      // Visible se o inline style mudou pra block OU se getComputedStyle diz display != none
+      var displayed = success.style.display === 'block'
+                   || getComputedStyle(success).display !== 'none';
+      if (!displayed) return;
+      var email = (emailInput.value || '').trim();
+      if (!isValidEmail(email)) return;
+      success.dataset.fcEcReferralAdded = '1';
+      markSubscribed();
+      var footer = document.createElement('div');
+      footer.className = 'fc-ec-referral-footer';
+      success.appendChild(footer);
+      renderReferralPanel(footer, email);
+    }
+
+    // Observador: dispara quando o atributo style do success muda
+    try {
+      var mo = new MutationObserver(maybeAppendReferral);
+      mo.observe(success, { attributes: true, attributeFilter: ['style'] });
+    } catch (e) {}
+
+    // Também tenta após click no botão (fallback caso o MutationObserver falhe)
+    var btn = document.getElementById('fcBtn');
+    if (btn) {
+      btn.addEventListener('click', function () {
+        setTimeout(maybeAppendReferral, 400);
+        setTimeout(maybeAppendReferral, 1200);
+      });
+    }
+  }
+
+  // Newsletter forms (class="newsletter-form", usado no rodapé dos posts).
+  // Fluxo atual: onsubmit inline chama subscribeNewsletter() que POST pro
+  // mesmo endpoint e substitui innerHTML por "✅ Inscrito com sucesso".
+  // Interceptamos antes (capture phase) pra trocar pelo painel de referral.
+  function initNewsletterHijack() {
+    document.addEventListener('submit', function (e) {
+      var form = e.target;
+      if (!form || !form.classList || !form.classList.contains('newsletter-form')) return;
+      if (form.dataset.fcEcHijacked === '1') return;
+      form.dataset.fcEcHijacked = '1';
+
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      var input = form.querySelector('input[type="email"]');
+      var btn = form.querySelector('button');
+      var email = input ? (input.value || '').trim() : '';
+      if (!isValidEmail(email)) {
+        alert('Por favor, insira um e-mail válido.');
+        form.dataset.fcEcHijacked = '';
+        return;
+      }
+      if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
+
+      submitEmail(email, 'blog_newsletter').finally(function () {
+        markSubscribed();
+        // Troca o form inteiro pelo painel de referral (mantém o mesmo
+        // visual que a newsletter-section do blog já tem)
+        var panel = document.createElement('div');
+        form.parentNode.replaceChild(panel, form);
+        renderReferralPanel(panel, email);
+      });
+    }, true); // capture phase para rodar ANTES do onsubmit inline
+  }
+
   /* ================= INIT ================= */
   function init() {
     captureRefFromURL();
     try { initExitIntent(); } catch (e) { /* silencioso */ }
     try { initSticky(); } catch (e) {}
+    try { initListaEsperaEnhancement(); } catch (e) {}
+    try { initNewsletterHijack(); } catch (e) {}
     if (isBlogPost()) {
       try { buildShare(); } catch (e) {}
       try { initInlineCTA(); } catch (e) {}
