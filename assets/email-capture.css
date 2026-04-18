@@ -31,8 +31,8 @@
   transition: opacity 0.35s ease;
 }
 .fc-ec-overlay.fc-ec-show {
-  opacity: 1;
-  pointer-events: auto;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .fc-ec-modal {
@@ -48,7 +48,7 @@
   transition: transform 0.35s ease;
 }
 .fc-ec-overlay.fc-ec-show .fc-ec-modal {
-  transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1) !important;
 }
 
 .fc-ec-close {
@@ -517,7 +517,88 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.fc-ec-referral-share .fc-ec-share-btn { padding: 9px 14px; font-size: 11px; }
+.fc-ec-referral-share .fc-ec-share-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 11px 18px !important;
+  font-size: 12px !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  color: #fff !important;
+  line-height: 1 !important;
+  border: 2px solid transparent !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+.fc-ec-referral-share .fc-ec-share-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  flex-shrink: 0;
+}
+.fc-ec-referral-share .fc-ec-share-btn span { display: inline !important; }
+
+/* Cores oficiais — force override contra cascata dos posts */
+.fc-ec-referral-share .fc-ec-share-btn.fc-ec-wa {
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+}
+.fc-ec-referral-share .fc-ec-share-btn.fc-ec-wa:hover {
+  background: #1DAE51 !important;
+  border-color: #1DAE51 !important;
+}
+.fc-ec-referral-share .fc-ec-share-btn.fc-ec-x {
+  background: #000 !important;
+  border-color: #000 !important;
+}
+.fc-ec-referral-share .fc-ec-share-btn.fc-ec-x:hover {
+  background: #222 !important;
+  border-color: #222 !important;
+}
+.fc-ec-referral-share .fc-ec-share-btn.fc-ec-in {
+  background: #0A66C2 !important;
+  border-color: #0A66C2 !important;
+}
+.fc-ec-referral-share .fc-ec-share-btn.fc-ec-in:hover {
+  background: #084E96 !important;
+  border-color: #084E96 !important;
+}
+
+/* Botão "Participe do grupo" — igual ao da lista de espera em cursos.html.
+   Especificidade .fc-ec-referral a.fc-ec-wa-group (0,2,1) vence .article-body a (0,1,1). */
+.fc-ec-referral a.fc-ec-wa-group,
+.fc-ec-referral-footer a.fc-ec-wa-group {
+  display: inline-block !important;
+  margin: 10px 0 4px !important;
+  padding: 14px 28px !important;
+  background: #25D366 !important;
+  color: #fff !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  text-decoration: none !important;
+  border: 2px solid #25D366 !important;
+  border-radius: 3px !important;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s !important;
+  font-family: 'Montserrat', sans-serif !important;
+  line-height: 1 !important;
+}
+.fc-ec-referral a.fc-ec-wa-group:hover,
+.fc-ec-referral-footer a.fc-ec-wa-group:hover {
+  background: #1DAE51 !important;
+  border-color: #1DAE51 !important;
+  transform: translateY(-1px);
+}
+.fc-ec-referral-divider {
+  height: 1px;
+  background: rgba(27,42,74,0.1);
+  margin: 20px auto;
+  max-width: 280px;
+}
+/* Quando o painel está num fundo escuro (CTA inline), ajusta o divider */
+.fc-ec-inline-cta .fc-ec-referral-divider {
+  background: rgba(255,255,255,0.15);
+}
 
 /* Referral anexado ao #formSuccess da lista de espera (não substitui,
    vem DEPOIS do botão WhatsApp, separado por linha tracejada) */
@@ -579,7 +660,21 @@
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 720px) {
-  .fc-ec-modal { padding: 40px 24px 28px; max-width: 100%; }
+  /* Bottom-sheet visual: modal no rodapé, largura total, cantos arredondados
+     só no topo. Mantém a transition base (transform 0.35s) sem redefinir
+     transforms aqui para evitar conflito de cascata que trava a transição. */
+  .fc-ec-overlay {
+    align-items: flex-end;
+    padding: 0;
+    background: rgba(14, 25, 41, 0.6);
+  }
+  .fc-ec-modal {
+    max-width: 100%;
+    width: 100%;
+    padding: 40px 24px 28px;
+    border-radius: 14px 14px 0 0;
+  }
+  .fc-ec-close { top: 8px; right: 8px; }
   .fc-ec-title { font-size: 20px; }
   .fc-ec-desc { font-size: 14px; }
 

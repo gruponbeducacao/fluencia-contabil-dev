@@ -18,6 +18,13 @@
 
   var REF_SALT = 'fc-ref-v1';
   var SHARE_BASE = 'https://fluenciacontabil.com.br/';
+  var WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/KWIP2oAR7KgCSAPW1Lqgtm?mode=gi_t';
+
+  // Botão "Participe do grupo" no success do CTA inline — habilitado em
+  // todos os posts do blog (rollout ampliado após validação no Balanço).
+  function ctaShowsWhatsAppGroup() {
+    return isBlogPost();
+  }
 
   var COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // 7 dias
   var ARM_DELAY_MS = 15000;   // tempo mínimo na página antes de armar exit-intent (desktop)
@@ -105,6 +112,7 @@
   function renderReferralPanel(container, email, opts) {
     opts = opts || {};
     var compact = !!opts.compact;
+    var waGroupHref = opts.waGroupHref || null;
     emailToRefCode(email).then(function (code) {
       safeLocalSet(KEYS.myRef, code);
       var url = buildShareURL(code);
@@ -114,6 +122,10 @@
       var xt = 'https://twitter.com/intent/tweet?text=' + encMsg + '&url=' + encURL;
       var ln = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encURL;
 
+      var waGroupBlock = waGroupHref
+        ? '<a class="fc-ec-wa-group" href="' + waGroupHref + '" target="_blank" rel="noopener">&#128172; Participe do grupo exclusivo de pré-lançamento</a>'
+        : '';
+
       var html;
       if (compact) {
         // Layout horizontal pra sticky bar
@@ -121,8 +133,8 @@
           + '<div class="fc-ec-referral">'
           +   '<div class="fc-ec-referral-icon">&#10003;</div>'
           +   '<div class="fc-ec-referral-text">'
-          +     '<div class="fc-ec-referral-title">Inscrito! Compartilhe e suba na fila.</div>'
-          +     '<div class="fc-ec-referral-sub">Cada amigo que entrar com seu link te aproxima das primeiras vagas.</div>'
+          +     '<div class="fc-ec-referral-title">Inscrito(a)! Compartilhe e suba na fila.</div>'
+          +     '<div class="fc-ec-referral-sub">Cada amigo(a) que entrar com seu link te aproxima das primeiras vagas.</div>'
           +   '</div>'
           +   '<div class="fc-ec-referral-link">'
           +     '<input type="text" readonly value="' + url + '">'
@@ -134,7 +146,13 @@
           + '<div class="fc-ec-referral">'
           +   '<div class="fc-ec-referral-icon">&#10003;</div>'
           +   '<div class="fc-ec-referral-title">Inscrição confirmada!</div>'
-          +   '<div class="fc-ec-referral-sub">Compartilhe o link abaixo com um amigo concurseiro. Cada inscrição pelo seu link te aproxima das primeiras vagas quando o curso abrir.</div>'
+          +   (waGroupHref
+              ? '<div class="fc-ec-referral-sub">Receba avisos em primeira mão e tire dúvidas direto com o Prof. Vinícius:</div>'
+                + waGroupBlock
+                + '<div class="fc-ec-referral-divider"></div>'
+                + '<div class="fc-ec-referral-sub">Quer subir na fila? Compartilhe o link com um(a) amigo(a) concurseiro(a) — cada inscrição pelo seu link te aproxima das primeiras vagas quando o curso abrir.</div>'
+              : '<div class="fc-ec-referral-sub">Compartilhe o link abaixo com um(a) amigo(a) concurseiro(a). Cada inscrição pelo seu link te aproxima das primeiras vagas quando o curso abrir.</div>'
+            )
           +   '<div class="fc-ec-referral-link">'
           +     '<input type="text" readonly value="' + url + '">'
           +     '<button type="button" class="fc-ec-referral-copy">Copiar</button>'
@@ -242,30 +260,37 @@
       showExit();
     }
 
-    // Desktop: mouse saiu pelo topo (direção barra de endereço / fechar aba)
-    document.addEventListener('mouseleave', function (e) {
-      if (e.clientY <= 0) trigger();
-    });
+    var isMobile = window.matchMedia('(max-width: 720px)').matches;
 
-    // Mobile: scroll-up rápido após tempo mínimo OU inatividade longa
-    var lastY = window.scrollY;
-    var lastT = Date.now();
-    var mobileArmed = false;
-    setTimeout(function () { mobileArmed = true; }, 20000); // 20s de leitura antes
+    if (!isMobile) {
+      // Desktop: mouse saiu pelo topo (direção barra de endereço / fechar aba)
+      document.addEventListener('mouseleave', function (e) {
+        if (e.clientY <= 0) trigger();
+      });
+    } else {
+      // Mobile: "engagement peak" — user rolou >70% do conteúdo e parou de
+      // rolar por 4s (terminou de ler, provável saída em seguida).
+      // Evita falso positivo do scroll-up rápido (usuário só voltando ao topo).
+      var reachedDepth = false;
+      var idleTimer = null;
+      var READ_MIN_MS = 12000; // mínimo de permanência antes de armar
+      var armedMobile = false;
+      setTimeout(function () { armedMobile = true; }, READ_MIN_MS);
 
-    window.addEventListener('scroll', function () {
-      if (!mobileArmed || shown) return;
-      var y = window.scrollY;
-      var t = Date.now();
-      var dy = lastY - y;         // positivo = scroll-up
-      var dt = t - lastT;
-      if (dy > 400 && dt < 600 && y < 500) {
-        // subiu rápido >400px em menos de 600ms e está perto do topo = sinal de saída
-        trigger();
-      }
-      lastY = y;
-      lastT = t;
-    }, { passive: true });
+      window.addEventListener('scroll', function () {
+        if (!armedMobile || shown) return;
+        var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable > 0 && (window.scrollY / scrollable) >= 0.7) {
+          reachedDepth = true;
+        }
+        if (idleTimer) clearTimeout(idleTimer);
+        if (reachedDepth) {
+          idleTimer = setTimeout(function () {
+            if (!shown) trigger();
+          }, 4000);
+        }
+      }, { passive: true });
+    }
 
     closeBtn.addEventListener('click', function () {
       hideExit();
@@ -545,7 +570,8 @@
       btn.textContent = 'Enviando...';
       submitEmail(email, 'blog_inline_cta').finally(function () {
         markSubscribed();
-        renderReferralPanel(body, email);
+        var opts = ctaShowsWhatsAppGroup() ? { waGroupHref: WHATSAPP_GROUP_URL } : {};
+        renderReferralPanel(body, email, opts);
         hideStickyIfAny();
       });
     });
