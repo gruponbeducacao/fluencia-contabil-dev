@@ -6,11 +6,10 @@
 (function () {
   'use strict';
 
-  // Endpoints separados por intenção:
-  //  - NEWSLETTER: quem quer só conteúdo gratuito (exit-intent, sticky, newsletter do blog)
-  //  - LISTA_ESPERA: quem quer garantir vaga do curso (CTA inline, form em cursos.html)
-  var NEWSLETTER_ENDPOINT  = 'https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec';
-  var LISTA_ESPERA_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxDC5lbaNwmRr6bbR3ECo7WgamNgEJr5MyqkHGiMe2YE07P5PVixf_NY4bIleoZe88Z/exec';
+  // Endpoint unificado: 1 URL, 1 Apps Script, 1 planilha com 2 abas
+  // (Newsletter + Lista de Espera). O roteamento acontece no servidor
+  // baseado no campo 'origem'.
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbx8lWrX5F0IByv0JEJ0iBGPjtLto7f2VxDHIh0uT0gZtvoj8EDVx0NFiriou-Dt0cxh/exec';
 
   var KEYS = {
     subscribed: 'fc_ec_subscribed',
@@ -57,19 +56,31 @@
     safeLocalSet(key, String(Date.now()));
   }
 
-  // list: 'newsletter' (default) ou 'lista_espera'
+  // O 3º parâmetro 'list' agora só é informativo — o roteamento entre as
+  // abas Newsletter e Lista de Espera é feito server-side pelo Apps Script
+  // com base no campo 'origem'.
   function submitEmail(email, origem, list) {
-    var endpoint = (list === 'lista_espera') ? LISTA_ESPERA_ENDPOINT : NEWSLETTER_ENDPOINT;
-    var data = new URLSearchParams({ email: email, origem: origem });
-    // O Apps Script da lista de espera espera nome/whatsapp — mandamos vazios
-    // no caso do CTA inline (form simples só com email).
-    if (list === 'lista_espera') {
-      data.append('nome', '');
-      data.append('whatsapp', '');
-    }
+    var data = new URLSearchParams();
+    data.append('email', email);
+    data.append('origem', origem);
+
+    // Campos de contexto (CRM futuro: funil + atribuição de tráfego)
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      data.append('pagina', window.location.pathname + window.location.search);
+      data.append('referrer', document.referrer || '');
+      data.append('utm_source',   urlParams.get('utm_source')   || '');
+      data.append('utm_medium',   urlParams.get('utm_medium')   || '');
+      data.append('utm_campaign', urlParams.get('utm_campaign') || '');
+      data.append('dispositivo',
+        window.matchMedia('(max-width: 720px)').matches ? 'Mobile' : 'Desktop');
+    } catch (e) {}
+
+    // Ref de indicação (se o usuário chegou via ?ref=<hash>)
     var refIn = safeLocalGet(KEYS.refIn);
     if (refIn) data.append('ref', refIn);
-    return fetch(endpoint, { method: 'POST', body: data, mode: 'no-cors' });
+
+    return fetch(ENDPOINT, { method: 'POST', body: data, mode: 'no-cors' });
   }
 
   function isValidEmail(v) {
