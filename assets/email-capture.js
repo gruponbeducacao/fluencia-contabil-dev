@@ -6,7 +6,11 @@
 (function () {
   'use strict';
 
-  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec';
+  // Endpoints separados por intenção:
+  //  - NEWSLETTER: quem quer só conteúdo gratuito (exit-intent, sticky, newsletter do blog)
+  //  - LISTA_ESPERA: quem quer garantir vaga do curso (CTA inline, form em cursos.html)
+  var NEWSLETTER_ENDPOINT  = 'https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec';
+  var LISTA_ESPERA_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxDC5lbaNwmRr6bbR3ECo7WgamNgEJr5MyqkHGiMe2YE07P5PVixf_NY4bIleoZe88Z/exec';
 
   var KEYS = {
     subscribed: 'fc_ec_subscribed',
@@ -53,11 +57,19 @@
     safeLocalSet(key, String(Date.now()));
   }
 
-  function submitEmail(email, origem) {
+  // list: 'newsletter' (default) ou 'lista_espera'
+  function submitEmail(email, origem, list) {
+    var endpoint = (list === 'lista_espera') ? LISTA_ESPERA_ENDPOINT : NEWSLETTER_ENDPOINT;
     var data = new URLSearchParams({ email: email, origem: origem });
+    // O Apps Script da lista de espera espera nome/whatsapp — mandamos vazios
+    // no caso do CTA inline (form simples só com email).
+    if (list === 'lista_espera') {
+      data.append('nome', '');
+      data.append('whatsapp', '');
+    }
     var refIn = safeLocalGet(KEYS.refIn);
     if (refIn) data.append('ref', refIn);
-    return fetch(ENDPOINT, { method: 'POST', body: data, mode: 'no-cors' });
+    return fetch(endpoint, { method: 'POST', body: data, mode: 'no-cors' });
   }
 
   function isValidEmail(v) {
@@ -334,7 +346,7 @@
     var html = ''
       + '<div class="fc-ec-sticky" id="fc-ec-sticky" role="complementary" aria-label="Inscrição na lista">'
       +   '<div class="fc-ec-sticky-text">'
-      +     '<strong>Gostou do conteúdo?</strong> Receba nossos próximos artigos e aulas gratuitas por e-mail.'
+      +     '<strong>Gostou do conteúdo?</strong> Receba nossos próximos artigos gratuitos por e-mail.'
       +   '</div>'
       +   '<form class="fc-ec-sticky-form" novalidate>'
       +     '<input type="email" placeholder="Seu melhor e-mail" required autocomplete="email">'
@@ -568,7 +580,7 @@
       }
       btn.disabled = true;
       btn.textContent = 'Enviando...';
-      submitEmail(email, 'blog_inline_cta').finally(function () {
+      submitEmail(email, 'blog_inline_cta', 'lista_espera').finally(function () {
         markSubscribed();
         var opts = ctaShowsWhatsAppGroup() ? { waGroupHref: WHATSAPP_GROUP_URL } : {};
         renderReferralPanel(body, email, opts);
