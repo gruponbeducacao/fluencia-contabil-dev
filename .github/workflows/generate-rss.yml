@@ -1,0 +1,60 @@
+name: Generate Blog RSS
+
+# Regenera blog/feed.xml automaticamente sempre que algum post do blog
+# mudar. Também pode ser disparado manualmente via workflow_dispatch.
+#
+# Estratégia: path filter garante que NÃO entra em loop (feed.xml não é
+# .html). O commit da própria Action usa [skip ci] como cinto+suspensório.
+
+on:
+  push:
+    branches: [dev, main]
+    paths:
+      - 'blog/**.html'
+      - 'scripts/generate_rss.py'
+      - '.github/workflows/generate-rss.yml'
+  workflow_dispatch: {}
+
+concurrency:
+  group: generate-rss-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate RSS
+        run: python scripts/generate_rss.py
+
+      - name: Check if feed changed
+        id: diff
+        run: |
+          if git diff --quiet -- blog/feed.xml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nenhuma mudança no feed.xml."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "feed.xml foi atualizado."
+          fi
+
+      - name: Commit and push if changed
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add blog/feed.xml
+          git commit -m "ci: auto-gerar RSS do blog [skip ci]"
+          git push
