@@ -10,6 +10,14 @@ Para cada HTML listado:
 5. Padroniza #C9A84C -> var(--dourado).
 
 Blocos <style> posteriores (CSS especifico da pagina) sao preservados.
+
+⚠️ LIMITACAO CONHECIDA: paginas que tinham o CSS base E o CSS especifico
+no MESMO bloco <style> (como blog.html e desafios.html no estado original)
+tinham o CSS especifico apagado junto do base. Se for rodar novamente em
+novas paginas, verifique ANTES que o site tem blocos <style> separados
+(usar `grep -c '<style>' arquivo.html`). Se for 1 bloco so, extrair
+manualmente o CSS especifico antes ou restaurar do git depois (ver
+commit dc65fb1 como referencia).
 """
 import re
 import sys
