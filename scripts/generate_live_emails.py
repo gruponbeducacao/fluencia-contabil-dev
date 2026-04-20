@@ -39,8 +39,15 @@ if hasattr(sys.stdout, "reconfigure"):
 TEMPLATE_DIR = Path("email-templates/sequencia-live/live-1-debito-credito")
 OUTPUT_BASE  = Path("email-templates/sequencia-live")
 
-# Arquivos de template (fonte)
-EMAILS = ["E1-confirmacao.html", "E2-lembrete-1d.html", "E3-lembrete-1h.html", "E4-replay.html"]
+# Arquivos de template (fonte) — estrutura de 5 emails por live
+# (E4 "AO VIVO" adicionado em 20/04/2026 — dispara na hora exata da live)
+EMAILS = [
+    "E1-confirmacao.html",
+    "E2-lembrete-1d.html",
+    "E3-lembrete-1h.html",
+    "E4-ao-vivo.html",
+    "E5-replay.html",
+]
 
 # ========== Substituições pra cada live ==========
 # ORDEM CRÍTICA:

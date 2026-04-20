@@ -28,7 +28,9 @@ if hasattr(sys.stdout, "reconfigure"):
 # ========== Config ==========
 TEMPLATE_DIR = Path("email-templates/broadcasts/convites-lives/live-1-debito-credito")
 OUTPUT_BASE  = Path("email-templates/broadcasts/convites-lives")
-EMAILS = ["D-3.html", "D-0.html"]
+EMAILS = ["D-3.html", "D-0.html", "AOVIVO.html"]
+# AOVIVO.html adicionado em 20/04/2026 — disparado às 20h00 do dia da live
+# Convida Newsletter + Lista + Lead Magnet pra entrar na live AGORA.
 
 # ========== Substituições ==========
 LIVES = {
