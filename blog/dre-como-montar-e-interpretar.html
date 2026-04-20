@@ -31,9 +31,11 @@
   "articleSection":"Demonstrações"
 }
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--azul-profundo:#1B2A4A;--azul-medio:#1E3A5F;--dourado:#C9A84C;--dourado-esc:#A68A3E;--cream:#FBF6E9;--branco:#FFFFFF;--texto:#2C2C2C;--texto-suave:#5A6A7E;}
+:root{--azul-profundo:#1B2A4A;--azul-medio:#1E3A5F;--dourado:#C8A84B;--dourado-esc:#A68A3E;--cream:#FBF6E9;--branco:#FFFFFF;--texto:#2C2C2C;--texto-suave:#5A6A7E;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;color:var(--texto);background:var(--branco);overflow-x:hidden;padding-top:72px;}
@@ -189,6 +191,11 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 /* Blog nav logo image */
 .nav-logo img{height:48px!important;width:auto!important;display:block!important;}
 @media(max-width:1100px){.nav-logo img{height:40px!important;}}
+
+/* Acessibilidade: respeita preferencia do sistema por menos movimento */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+}
 </style>
 <link rel="stylesheet" href="../assets/email-capture.css">
 <script src="../assets/email-capture.js" defer></script>
@@ -200,7 +207,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 
 <!-- NAVBAR -->
 <nav id="mainNav" aria-label="Menu principal">
-  <a href="../index.html" class="nav-logo"><img src="../Logo_Completa_BrancoDourado_COM_TAGLINE_FUNDO_AZUL.png" alt="Fluência Contábil"></a>
+  <a href="../index.html" class="nav-logo"><img src="../Logo_Completa_BrancoDourado_COM_TAGLINE_FUNDO_AZUL.png" alt="Fluência Contábil" loading="eager" decoding="async"></a>
   <ul class="nav-links">
     <li><a href="../institucional.html">Institucional</a></li>
     <li><a href="../professor.html">O Professor</a></li>
@@ -375,7 +382,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 <aside class="sidebar">
   <div class="side-card side-bio">
     <h3>Sobre o Professor</h3>
-    <img src="../assets/foto-vinicius.jpg" alt="Vinícius Ferraz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;background:#1B2A4A;">
+    <img src="../assets/foto-vinicius.jpg" alt="Vinícius Ferraz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;background:#1B2A4A;" loading="lazy" decoding="async">
     <p>Vinícius Ferraz — Auditor Fiscal, professor de contabilidade e criador do método Fluência Contábil.</p>
     <a href="../professor.html">Saiba mais &rarr;</a>
   </div>
@@ -506,10 +513,10 @@ function subscribeNewsletter(formEl) {
   var data = new URLSearchParams({ email: email, origem: 'Blog' });
   fetch('https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec', { method: 'POST', body: data, mode: 'no-cors' })
   .then(function() {
-    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
+    formEl.innerHTML = '<p style="color:var(--dourado);font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
   })
   .catch(function() {
-    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
+    formEl.innerHTML = '<p style="color:var(--dourado);font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
   });
 }
 </script>

@@ -246,14 +246,31 @@
   function showExit() {
     var overlay = document.getElementById('fc-ec-exit-overlay');
     if (!overlay) return;
+    // Guarda elemento focado antes do modal abrir — WCAG 2.4.3 (Focus Order)
+    overlay._fcLastFocus = document.activeElement;
     overlay.classList.add('fc-ec-show');
     document.documentElement.style.overflow = 'hidden';
+    // Move focus pro input de email (ponto de ação imediato).
+    // setTimeout pra dar tempo do transition terminar antes do focus.
+    setTimeout(function () {
+      var target = overlay.querySelector('input[type="email"]')
+                || overlay.querySelector('.fc-ec-close');
+      if (target) {
+        try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); }
+      }
+    }, 50);
   }
   function hideExit() {
     var overlay = document.getElementById('fc-ec-exit-overlay');
     if (!overlay) return;
     overlay.classList.remove('fc-ec-show');
     document.documentElement.style.overflow = '';
+    // Restaura focus no elemento que tinha focus antes do modal abrir.
+    var last = overlay._fcLastFocus;
+    if (last && typeof last.focus === 'function') {
+      try { last.focus({ preventScroll: true }); } catch (e) {}
+    }
+    overlay._fcLastFocus = null;
   }
 
   function renderExitSuccess(email) {
@@ -329,6 +346,24 @@
       if (e.key === 'Escape' && overlay.classList.contains('fc-ec-show')) {
         hideExit();
         markClosed(KEYS.exitClosedAt);
+      }
+    });
+    // Focus trap — Tab/Shift+Tab circula dentro do modal (WCAG 2.1.2 no keyboard trap fora, 2.4.3 focus order).
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      if (!overlay.classList.contains('fc-ec-show')) return;
+      var focusable = overlay.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     });
 

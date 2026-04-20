@@ -8,9 +8,11 @@
 <meta name="keywords" content="SEFAZ-SP, AFRE, gestão tributária, contabilidade concurso, FCC, CPC 06, CPC 18, CPC 26, prova contabilidade 2025, auditor fiscal São Paulo">
 <link rel="canonical" href="https://fluenciacontabil.com.br/blog/sefaz-sp-afre-contabilidade">
 <meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--azul-profundo:#1B2A4A;--azul-medio:#1E3A5F;--dourado:#C9A84C;--cream:#FBF6E9;--branco:#FFFFFF;--texto:#2C2C2C;--texto-suave:#5A6A7E;--borda:#E8E0D0;}
+:root{--azul-profundo:#1B2A4A;--azul-medio:#1E3A5F;--dourado:#C8A84B;--cream:#FBF6E9;--branco:#FFFFFF;--texto:#2C2C2C;--texto-suave:#5A6A7E;--borda:#E8E0D0;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{font-family:'Quattrocento Sans',sans-serif;color:var(--texto);background:var(--branco);overflow-x:hidden;line-height:1.8;}
 #progress-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--dourado);z-index:9999;transition:width .1s linear;}
@@ -122,6 +124,11 @@ footer{background:#0E1929;padding:50px 5% 30px;}
 /* Blog nav logo image */
 .nav-logo img{height:48px!important;width:auto!important;display:block!important;}
 @media(max-width:1100px){.nav-logo img{height:40px!important;}}
+
+/* Acessibilidade: respeita preferencia do sistema por menos movimento */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+}
 </style>
 
 <meta property="og:title" content="SEFAZ-SP AFRE 2025 (Gestão Tributária): como a Contabilidade foi cobrada | Fluência Contábil">
@@ -345,7 +352,7 @@ footer{background:#0E1929;padding:50px 5% 30px;}
   <aside class="sidebar">
     <div class="sidebar-card">
       <h3>Sobre o Professor</h3>
-      <img src="../assets/foto-vinicius.jpg" alt="Vinícius Ferraz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;background:#1B2A4A;">
+      <img src="../assets/foto-vinicius.jpg" alt="Vinícius Ferraz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;background:#1B2A4A;" loading="eager" decoding="async">
       <p>Vinícius Ferraz &mdash; Auditor Fiscal, Analista Legislativo de Contabilidade no Senado Federal e criador do método Fluência Contábil.</p>
       <a href="../professor.html" style="font-size:13px;color:var(--azul-medio);font-weight:700;text-decoration:none;">Saiba mais &rarr;</a>
     </div>
@@ -416,8 +423,8 @@ function subscribeNewsletter(f){
   if(!v||!/\S+@\S+\.\S+/.test(v)){alert('Por favor, insira um e-mail válido.');return;}
   b.textContent='Enviando...';b.disabled=true;
   fetch('https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec',{method:'POST',body:new URLSearchParams({email:v,origem:'Blog'}),mode:'no-cors'})
-  .then(function(){f.innerHTML='<p style="color:#C9A84C;font-weight:700;font-size:15px;">&#10003; Inscrito com sucesso!</p>';})
-  .catch(function(){f.innerHTML='<p style="color:#C9A84C;font-weight:700;font-size:15px;">&#10003; Inscrito com sucesso!</p>';});
+  .then(function(){f.innerHTML='<p style="color:var(--dourado);font-weight:700;font-size:15px;">&#10003; Inscrito com sucesso!</p>';})
+  .catch(function(){f.innerHTML='<p style="color:var(--dourado);font-weight:700;font-size:15px;">&#10003; Inscrito com sucesso!</p>';});
 }
 </script>
 </body>
