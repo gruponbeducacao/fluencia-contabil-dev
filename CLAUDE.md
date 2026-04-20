@@ -151,7 +151,25 @@ Path local: `C:/Fluência_Contábil_OS_C/_MARKETING/Landing_Pages/Fluencia_LP/di
 
 ## MailerLite — groups e configuração
 
-**Conta:** `contato@fluenciacontabil.com.br` (domínio autenticado via SPF/DKIM em `fluenciacontabil.com.br`)
+**Conta:** `contato@fluenciacontabil.com.br` (domínio autenticado via SPF/DKIM + DMARC em `fluenciacontabil.com.br`)
+
+**DMARC:** ativo em modo `p=none` (monitor) desde 19/04/2026. Registro TXT em `_dmarc.fluenciacontabil.com.br`: `v=DMARC1; p=none; rua=mailto:contato@fluenciacontabil.com.br; fo=1`.
+
+### Status das automações (19/04/2026 · fim do dia)
+
+| Automation | Status | Emails | Cadência |
+|---|---|---|---|
+| 🟢 Sequência A — Newsletter | ✅ **ATIVA** | 5 (A1-A5) | 10 dias |
+| 🔴 Sequência B — Lista de Espera | ✅ **ATIVA** | 6 (B1-B6) | 15 dias |
+| 🟡 Sequência C — Lead Magnet Dicionário ⭐ | ✅ **ATIVA** | 6 (C1-C6) | 15 dias |
+| 🎤 Sequência Live 1 — Débito e Crédito | ⏳ Pendente | 4 (E1-E4) | qui 21/05 · 20h |
+| 🎤 Sequência Live 2 — 5 CPCs | ⏳ Pendente | 4 | qui 28/05 · 20h |
+| 🎤 Sequência Live 3 — CPC 51 | ⏳ Pendente | 4 | ter 02/06 · 20h |
+| 🎤 Sequência Live 4 — 7 Pegadinhas | ⏳ Pendente | 4 | qui 11/06 · 20h |
+| 🚨 Sequência Live Final — Lançamento | ⏳ Pendente | 4 (c/ E4 variante) | qui 18/06 · 20h |
+| 📰 RSS Campaign | ⏳ Pendente | 1/post | imediato |
+
+**Total:** 3 de 9 automações ativas. 17 emails automáticos rodando. Leads reais entrando já recebem.
 
 ### Group IDs
 
