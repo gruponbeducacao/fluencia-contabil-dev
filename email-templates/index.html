@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview dos Emails — Fluência Contábil</title>
+  <style>
+    :root {
+      --azul: #1B2A4A;
+      --azul-med: #2A3F6F;
+      --dourado: #C8A84B;
+      --cream: #FBF6E9;
+      --vermelho: #C0392B;
+      --verde: #25D366;
+      --cinza: #6B7280;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--cream);
+      color: var(--azul);
+      line-height: 1.5;
+      padding: 40px 24px;
+    }
+    .wrap { max-width: 1080px; margin: 0 auto; }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--cinza);
+      margin-bottom: 32px;
+      font-size: 15px;
+    }
+    .sect {
+      margin-bottom: 32px;
+      background: white;
+      border-radius: 12px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(27, 42, 74, 0.06);
+    }
+    .sect h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--azul);
+      margin-bottom: 4px;
+    }
+    .sect h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--azul);
+      margin: 18px 0 8px 0;
+    }
+    .sect .badge {
+      display: inline-block;
+      background: var(--dourado);
+      color: var(--azul);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-left: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sect .desc {
+      color: var(--cinza);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+    }
+    .card {
+      display: block;
+      background: var(--cream);
+      border: 1px solid #E8E2D0;
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-decoration: none;
+      color: var(--azul);
+      transition: all 0.15s;
+    }
+    .card:hover {
+      background: white;
+      border-color: var(--dourado);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(200, 168, 75, 0.18);
+    }
+    .card .num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--dourado);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .card .subj {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 4px;
+      line-height: 1.35;
+    }
+    .card .meta {
+      font-size: 11px;
+      color: var(--cinza);
+      margin-top: 4px;
+    }
+    .alert {
+      background: #FEF3C7;
+      border-left: 4px solid var(--dourado);
+      padding: 16px 20px;
+      border-radius: 4px;
+      margin-bottom: 28px;
+      font-size: 14px;
+      color: var(--azul);
+    }
+    .alert strong { color: var(--azul); }
+    .totals {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      background: var(--azul);
+      color: white;
+      padding: 18px 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .stat .big {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--dourado);
+      line-height: 1;
+    }
+    .stat .label {
+      font-size: 11px;
+      color: #FBF6E9;
+      margin-top: 6px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>📧 Preview dos Emails</h1>
+    <p class="subtitle">Fluência Contábil — campanha de lançamento 2026. Clique em cada card pra abrir o email em tela cheia.</p>
+
+    <div class="totals">
+      <div class="stat"><div class="big">56</div><div class="label">emails totais</div></div>
+      <div class="stat"><div class="big">17</div><div class="label">sequências auto (A+B+C)</div></div>
+      <div class="stat"><div class="big">19</div><div class="label">emails de lives</div></div>
+      <div class="stat"><div class="big">10</div><div class="label">convites pras lives</div></div>
+      <div class="stat"><div class="big">10</div><div class="label">broadcasts lançamento</div></div>
+    </div>
+
+    <div class="alert">
+      <strong>Como usar:</strong> abra esse arquivo via servidor local (<code>localhost:3000/email-templates/</code>) e clique em cada email pra visualizar. Pra testar no MailerLite: copie o HTML do arquivo <code>.html</code>, cola em <em>MailerLite → Campaigns → Create → HTML editor</em>, clica em <em>"Send test email"</em>.
+    </div>
+
+    <!-- SEQUÊNCIA A -->
+    <div class="sect">
+      <h2>🟢 Sequência A — Newsletter <span class="badge">5/5 prontos</span></h2>
+      <p class="desc">Automação. Dispara quando o lead entra no group Newsletter.</p>
+      <div class="list">
+        <a class="card" href="sequencia-a/A1-bem-vindo.html" target="_blank">
+          <div class="num">A1 · Dia 0</div>
+          <div class="subj">Bem-vindo(a) — baixe o Dicionário aqui</div>
+        </a>
+        <a class="card" href="sequencia-a/A2-idioma.html" target="_blank">
+          <div class="num">A2 · Dia +2</div>
+          <div class="subj">A contabilidade é um idioma</div>
+        </a>
+        <a class="card" href="sequencia-a/A3-pegadinha.html" target="_blank">
+          <div class="num">A3 · Dia +4</div>
+          <div class="subj">A pegadinha que 9 em 10 caem</div>
+        </a>
+        <a class="card" href="sequencia-a/A4-quem-somos.html" target="_blank">
+          <div class="num">A4 · Dia +7</div>
+          <div class="subj">Quem está por trás da Fluência</div>
+        </a>
+        <a class="card" href="sequencia-a/A5-lista-espera.html" target="_blank">
+          <div class="num">A5 · Dia +10</div>
+          <div class="subj">Um próximo passo</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SEQUÊNCIA C -->
+    <div class="sect" style="border-left:4px solid #C8A84B;">
+      <h2>🟡 Sequência C — Lead Magnet Dicionário <span class="badge">6/6 prontos</span> <span class="badge" style="background:#C0392B;color:white;">PRIORIDADE</span></h2>
+      <p class="desc">Automação. Dispara quando o lead se inscreve na LP <code>dicionario.fluenciacontabil.com.br</code>. <strong>Canal principal</strong> — recebe tráfego pago.</p>
+      <div class="list">
+        <a class="card" href="sequencia-c/C1-bem-vindo-lead-magnet.html" target="_blank">
+          <div class="num">C1 · Dia 0</div>
+          <div class="subj">Seu Dicionário chegou — e tem mais história aí</div>
+          <div class="meta">Boas-vindas + PDF (fallback) + contrato</div>
+        </a>
+        <a class="card" href="sequencia-c/C2-dicionario-metade.html" target="_blank">
+          <div class="num">C2 · Dia +2</div>
+          <div class="subj">O Dicionário é só metade. A outra metade é a chave.</div>
+          <div class="meta">Método "idioma" + receita prática de uso</div>
+        </a>
+        <a class="card" href="sequencia-c/C3-pegadinha.html" target="_blank">
+          <div class="num">C3 · Dia +5</div>
+          <div class="subj">A pegadinha que o Dicionário te salva de cair</div>
+          <div class="meta">Questão CEBRASPE + Dicionário como arma</div>
+        </a>
+        <a class="card" href="sequencia-c/C4-quem-tras-dicionario.html" target="_blank">
+          <div class="num">C4 · Dia +8</div>
+          <div class="subj">Quem tá por trás desse Dicionário</div>
+          <div class="meta">Trajetória Vinícius · grid de números</div>
+        </a>
+        <a class="card" href="sequencia-c/C5-aula-01.html" target="_blank">
+          <div class="num">C5 · Dia +12</div>
+          <div class="subj">[Aula 01 grátis] Método das Partidas Dobradas</div>
+          <div class="meta">CTA: Baixar PDF da Aula 01</div>
+        </a>
+        <a class="card" href="sequencia-c/C6-lista-espera.html" target="_blank">
+          <div class="num">C6 · Dia +15</div>
+          <div class="subj">Seu próximo passo depois de 3 semanas com a gente</div>
+          <div class="meta">CTA: Entrar na Lista de Espera</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SEQUÊNCIA B -->
+    <div class="sect">
+      <h2>🔴 Sequência B — Lista de Espera <span class="badge">6/6 prontos</span></h2>
+      <p class="desc">Automação. Dispara quando o lead entra no group Lista de Espera.</p>
+      <div class="list">
+        <a class="card" href="sequencia-b/B1-bem-vindo-lista.html" target="_blank">
+          <div class="num">B1 · Dia 0</div>
+          <div class="subj">Você está dentro</div>
+        </a>
+        <a class="card" href="sequencia-b/B2-cinco-camadas.html" target="_blank">
+          <div class="num">B2 · Dia +2</div>
+          <div class="subj">As 5 camadas do método</div>
+        </a>
+        <a class="card" href="sequencia-b/B3-quem-te-ensina.html" target="_blank">
+          <div class="num">B3 · Dia +5</div>
+          <div class="subj">Quem vai te ensinar</div>
+        </a>
+        <a class="card" href="sequencia-b/B4-vip-lives.html" target="_blank">
+          <div class="num">B4 · Dia +8</div>
+          <div class="subj">[VIP] As 4 lives gratuitas</div>
+        </a>
+        <a class="card" href="sequencia-b/B5-aula-01.html" target="_blank">
+          <div class="num">B5 · Dia +12</div>
+          <div class="subj">[Aula 01 grátis] Partidas Dobradas</div>
+        </a>
+        <a class="card" href="sequencia-b/B6-rotina.html" target="_blank">
+          <div class="num">B6 · Dia +15</div>
+          <div class="subj">A rotina que separa quem passa</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- SEQUÊNCIA DE LIVE -->
+    <div class="sect">
+      <h2>🎤 Sequência de Live <span class="badge">19/19 prontos</span></h2>
+      <p class="desc">Automação. Dispara quando o lead se inscreve na LP da live específica.</p>
+
+      <h3>🔴 Live 1 · Débito e Crédito · qui 21/05</h3>
+      <div class="list">
+        <a class="card" href="sequencia-live/live-1-debito-credito/E1-confirmacao.html" target="_blank"><div class="num">E1 · Na inscrição</div><div class="subj">Vaga confirmada</div></a>
+        <a class="card" href="sequencia-live/live-1-debito-credito/E2-lembrete-1d.html" target="_blank"><div class="num">E2 · Véspera 20h</div><div class="subj">Amanhã às 20h</div></a>
+        <a class="card" href="sequencia-live/live-1-debito-credito/E3-lembrete-1h.html" target="_blank"><div class="num">E3 · Dia 19h</div><div class="subj">Em 1h começa — link aqui</div></a>
+        <a class="card" href="sequencia-live/live-1-debito-credito/E4-replay.html" target="_blank"><div class="num">E4 · D+1</div><div class="subj">Replay + próxima live</div></a>
+      </div>
+
+      <h3>🔴 Live 2 · 5 CPCs · qui 28/05</h3>
+      <div class="list">
+        <a class="card" href="sequencia-live/live-2-cpcs/E1-confirmacao.html" target="_blank"><div class="num">E1</div><div class="subj">Vaga confirmada</div></a>
+        <a class="card" href="sequencia-live/live-2-cpcs/E2-lembrete-1d.html" target="_blank"><div class="num">E2</div><div class="subj">Amanhã às 20h</div></a>
+        <a class="card" href="sequencia-live/live-2-cpcs/E3-lembrete-1h.html" target="_blank"><div class="num">E3</div><div class="subj">Em 1h — link aqui</div></a>
+        <a class="card" href="sequencia-live/live-2-cpcs/E4-replay.html" target="_blank"><div class="num">E4</div><div class="subj">Replay + Live 3</div></a>
+      </div>
+
+      <h3>🔴 Live 3 · CPC 51 · ter 02/06</h3>
+      <div class="list">
+        <a class="card" href="sequencia-live/live-3-cpc-51/E1-confirmacao.html" target="_blank"><div class="num">E1</div><div class="subj">Vaga confirmada</div></a>
+        <a class="card" href="sequencia-live/live-3-cpc-51/E2-lembrete-1d.html" target="_blank"><div class="num">E2</div><div class="subj">Amanhã às 20h</div></a>
+        <a class="card" href="sequencia-live/live-3-cpc-51/E3-lembrete-1h.html" target="_blank"><div class="num">E3</div><div class="subj">Em 1h — link aqui</div></a>
+        <a class="card" href="sequencia-live/live-3-cpc-51/E4-replay.html" target="_blank"><div class="num">E4</div><div class="subj">Replay + Live 4</div></a>
+      </div>
+
+      <h3>🔴 Live 4 · 7 Pegadinhas · qui 11/06</h3>
+      <div class="list">
+        <a class="card" href="sequencia-live/live-4-pegadinhas/E1-confirmacao.html" target="_blank"><div class="num">E1</div><div class="subj">Vaga confirmada</div></a>
+        <a class="card" href="sequencia-live/live-4-pegadinhas/E2-lembrete-1d.html" target="_blank"><div class="num">E2</div><div class="subj">Amanhã às 20h</div></a>
+        <a class="card" href="sequencia-live/live-4-pegadinhas/E3-lembrete-1h.html" target="_blank"><div class="num">E3</div><div class="subj">Em 1h — link aqui</div></a>
+        <a class="card" href="sequencia-live/live-4-pegadinhas/E4-replay.html" target="_blank"><div class="num">E4</div><div class="subj">Replay + Live Final</div></a>
+      </div>
+
+      <h3>🚨 Live Final · Lançamento · qui 18/06</h3>
+      <div class="list">
+        <a class="card" href="sequencia-live/live-final/E1-confirmacao.html" target="_blank"><div class="num">E1</div><div class="subj">Vaga confirmada</div></a>
+        <a class="card" href="sequencia-live/live-final/E2-lembrete-1d.html" target="_blank"><div class="num">E2</div><div class="subj">Amanhã às 20h</div></a>
+        <a class="card" href="sequencia-live/live-final/E3-lembrete-1h.html" target="_blank"><div class="num">E3</div><div class="subj">Em 1h — link aqui</div></a>
+        <a class="card" href="sequencia-live/live-final/E4-replay-lancamento.html" target="_blank"><div class="num">E4 · Variante</div><div class="subj">Replay + carrinho de vendas</div></a>
+      </div>
+    </div>
+
+    <!-- BROADCASTS DE CONVITE -->
+    <div class="sect">
+      <h2>📢 Broadcasts de Convite pras Lives <span class="badge">10/10 prontos</span></h2>
+      <p class="desc">Campanhas agendadas (scheduled). D-3 manhã + D-0 manhã pras 5 lives.</p>
+
+      <h3>Live 1 (Débito e Crédito)</h3>
+      <div class="list">
+        <a class="card" href="broadcasts/convites-lives/live-1-debito-credito/D-3.html" target="_blank"><div class="num">D-3 · seg 18/05 · 09h</div><div class="subj">Em 3 dias: live gratuita</div></a>
+        <a class="card" href="broadcasts/convites-lives/live-1-debito-credito/D-0.html" target="_blank"><div class="num">D-0 · qui 21/05 · 09h</div><div class="subj">HOJE às 20h</div></a>
+      </div>
+
+      <h3>Live 2 (5 CPCs)</h3>
+      <div class="list">
+        <a class="card" href="broadcasts/convites-lives/live-2-cpcs/D-3.html" target="_blank"><div class="num">D-3 · seg 25/05 · 09h</div><div class="subj">Em 3 dias: live gratuita</div></a>
+        <a class="card" href="broadcasts/convites-lives/live-2-cpcs/D-0.html" target="_blank"><div class="num">D-0 · qui 28/05 · 09h</div><div class="subj">HOJE às 20h</div></a>
+      </div>
+
+      <h3>Live 3 (CPC 51)</h3>
+      <div class="list">
+        <a class="card" href="broadcasts/convites-lives/live-3-cpc-51/D-3.html" target="_blank"><div class="num">D-3 · sáb 30/05 · 09h</div><div class="subj">Em 3 dias: live gratuita</div></a>
+        <a class="card" href="broadcasts/convites-lives/live-3-cpc-51/D-0.html" target="_blank"><div class="num">D-0 · ter 02/06 · 09h</div><div class="subj">HOJE às 20h</div></a>
+      </div>
+
+      <h3>Live 4 (7 Pegadinhas)</h3>
+      <div class="list">
+        <a class="card" href="broadcasts/convites-lives/live-4-pegadinhas/D-3.html" target="_blank"><div class="num">D-3 · seg 08/06 · 09h</div><div class="subj">Em 3 dias: live gratuita</div></a>
+        <a class="card" href="broadcasts/convites-lives/live-4-pegadinhas/D-0.html" target="_blank"><div class="num">D-0 · qui 11/06 · 09h</div><div class="subj">HOJE às 20h</div></a>
+      </div>
+
+      <h3>Live Final (Lançamento)</h3>
+      <div class="list">
+        <a class="card" href="broadcasts/convites-lives/live-final/D-3.html" target="_blank"><div class="num">D-3 · seg 15/06 · 09h</div><div class="subj">Em 3 dias: Live Final</div></a>
+        <a class="card" href="broadcasts/convites-lives/live-final/D-0.html" target="_blank"><div class="num">D-0 · qui 18/06 · 09h</div><div class="subj">HOJE às 20h · lançamento</div></a>
+      </div>
+    </div>
+
+    <!-- BROADCASTS DE LANÇAMENTO -->
+    <div class="sect">
+      <h2>🚨 Broadcasts de Lançamento <span class="badge">9/9 prontos</span></h2>
+      <p class="desc">Campanhas agendadas (L1–L8) + broadcast extra "bem-vindo de última hora" (automation c/ filtro de data).</p>
+      <div class="list">
+        <a class="card" href="broadcasts/lancamento/L1-faltam-10-dias.html" target="_blank">
+          <div class="num">L1 · seg 08/06</div>
+          <div class="subj">Faltam 10 dias</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/L2-teaser-modalidades.html" target="_blank">
+          <div class="num">L2 · seg 15/06</div>
+          <div class="subj">Quarta abre. Escolha modalidade.</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/L3-dia-d-vagas-abertas.html" target="_blank" style="border:2px solid var(--vermelho);">
+          <div class="num" style="color: var(--vermelho);">L3 · DIA D · 18/06 22h</div>
+          <div class="subj">🎯 Vagas abertas — 20% OFF</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/L4-roi-anual.html" target="_blank">
+          <div class="num">L4 · sex 19/06</div>
+          <div class="subj">Quanto o curso vale</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/L5-vagas-depoimento.html" target="_blank">
+          <div class="num">L5 · seg 22/06</div>
+          <div class="subj">Restam X vagas + depoimento</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/L6-5-dias.html" target="_blank">
+          <div class="num">L6 · qui 25/06</div>
+          <div class="subj">5 dias pro desconto expirar</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/L7-48h-faq.html" target="_blank">
+          <div class="num">L7 · seg 28/06</div>
+          <div class="subj">48 horas + FAQ</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/L8-ultimo-dia.html" target="_blank" style="border:2px solid var(--vermelho);">
+          <div class="num" style="color: var(--vermelho);">L8 · ter 30/06 · ÚLTIMO</div>
+          <div class="subj">Hoje 23h59 o desconto acaba</div>
+        </a>
+        <a class="card" href="broadcasts/lancamento/extra-ultima-hora.html" target="_blank" style="background:#FEF3C7;">
+          <div class="num" style="color: var(--dourado);">⚡ Extra · 13-17/06</div>
+          <div class="subj">Bem-vindo de última hora</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="alert" style="background: #D1FAE5; border-left-color: #10B981;">
+      <strong>✅ Plano editorial 100% pronto.</strong> Próximos passos operacionais: criar groups no MailerLite, hospedar PDF da Aula 01, substituir placeholders de preço ({PRECO_*}, {LINK_VENDAS}, {VAGAS_RESTANTES}), captar depoimento real pro L5, e montar automações + agendar os broadcasts. Ver <code>README.md</code> pra instruções.
+    </div>
+
+  </div>
+</body>
+</html>

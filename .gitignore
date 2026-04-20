@@ -1,0 +1,13 @@
+# Relatórios temporários de auditoria de performance
+scripts/lh-*.json
+
+# Dependências locais (preview dev — npx serve)
+node_modules/
+package.json
+package-lock.json
+
+# Config local do Claude Code
+.claude/
+
+# Arte bruta / drafts (não versionados)
+artes/

@@ -101,6 +101,7 @@ Código está na planilha **"LEADS Fluência Contábil"** → Extensões → App
 |---|---|
 | **Newsletter** | Data · E-mail · Origem · Ref · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo |
 | **Lista de Espera** | Data · Nome · E-mail · WhatsApp · Origem · Ref · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo |
+| **Lead Magnet - Dicionário** | Data · Nome · E-mail · WhatsApp · Origem · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo |
 | **Dashboard** | Métricas agregadas via fórmulas (TOTAIS · HOJE · ÚLTIMOS 7 DIAS · POR ORIGEM · POR DISPOSITIVO · TOP UTM · TOP REFERRERS · GLOSSÁRIO) |
 
 Todos os headers têm `setNote()` com explicação (mouse hover).
@@ -139,9 +140,87 @@ Path local: `C:/Fluência_Contábil_OS_C/_MARKETING/Landing_Pages/Fluencia_LP/di
 - Card "Explicações didáticas": "sem transcrição seca de norma" (realinhado com card de fontes)
 - PDF real do dicionário: `Dicionario_Contabil_Fluencia.pdf` (~5.4 MB, é a V2 real do conteúdo, fonte em `C:/Fluência_Contábil_OS_C/_CONTEUDO/Dicionario_Contabil_Fluencia_V2.pdf`)
 - Widgets de captura: exit-intent + sticky bar com copy de lead magnet ("Baixe o Dicionário Contábil grátis"). Submit → redireciona pra `/obrigado.html` (que dispara download do PDF).
-- Endpoint da LP: **não** é o unificado — usa o próprio `AKfycbzn7NkJAEr_zVz_POnd4JeugXdDe-CGLbhqhXn4F27lkASxbTkNOGB_x5C1n7hFK-jUQg` (separado, pois é outro repo). Pode ser unificado no futuro se quiser consolidar tudo numa planilha só.
+- Endpoint: **unificado** (19/04/2026) — usa o mesmo `AKfycbx8lWrX...` do site principal. Apps Script roteia por `origem` começando com `dicionario_` → aba **"Lead Magnet - Dicionário"** + MailerLite group `185179987559581196`. O endpoint antigo separado (`AKfycbzn...`) está arquivado.
+- Origens padronizadas (todas começam com `dicionario_`):
+  - `dicionario_form_top` · `dicionario_form_bottom` (forms completos com nome+whatsapp)
+  - `dicionario_exit_intent` · `dicionario_sticky_bar` (widgets só email)
 
 **Quando atualizar o PDF:** basta copiar o `V2.pdf` da pasta `_CONTEUDO` sobrescrevendo `Dicionario_Contabil_Fluencia.pdf` na raiz do repo, `git add/commit/push`. GitHub Pages serve automaticamente.
+
+---
+
+## MailerLite — groups e configuração
+
+**Conta:** `contato@fluenciacontabil.com.br` (domínio autenticado via SPF/DKIM + DMARC em `fluenciacontabil.com.br`)
+
+**DMARC:** ativo em modo `p=none` (monitor) desde 19/04/2026. Registro TXT em `_dmarc.fluenciacontabil.com.br`: `v=DMARC1; p=none; rua=mailto:contato@fluenciacontabil.com.br; fo=1`.
+
+### Status das automações (19/04/2026 · fim do dia)
+
+| Automation | Status | Emails | Cadência |
+|---|---|---|---|
+| 🟢 Sequência A — Newsletter | ✅ **ATIVA** | 5 (A1-A5) | 10 dias |
+| 🔴 Sequência B — Lista de Espera | ✅ **ATIVA** | 6 (B1-B6) | 15 dias |
+| 🟡 Sequência C — Lead Magnet Dicionário ⭐ | ✅ **ATIVA** | 6 (C1-C6) | 15 dias |
+| 🎤 Sequência Live 1 — Débito e Crédito | ⏳ Pendente | 4 (E1-E4) | qui 21/05 · 20h |
+| 🎤 Sequência Live 2 — 5 CPCs | ⏳ Pendente | 4 | qui 28/05 · 20h |
+| 🎤 Sequência Live 3 — CPC 51 | ⏳ Pendente | 4 | ter 02/06 · 20h |
+| 🎤 Sequência Live 4 — 7 Pegadinhas | ⏳ Pendente | 4 | qui 11/06 · 20h |
+| 🚨 Sequência Live Final — Lançamento | ⏳ Pendente | 4 (c/ E4 variante) | qui 18/06 · 20h |
+| 📰 RSS Campaign | ⏳ Pendente | 1/post | imediato |
+
+**Total:** 3 de 9 automações ativas. 17 emails automáticos rodando. Leads reais entrando já recebem.
+
+### Group IDs
+
+| Group | ID |
+|---|---|
+| Newsletter | `185179968949454391` |
+| Lista de Espera | `185179979081843871` |
+| Lead Magnet — Dicionário | `185179987559581196` |
+| **Live 1** (Débito/Crédito, qui 21/05) | `185203741114238022` |
+| **Live 2** (5 CPCs, qui 28/05) | `185203748785620698` |
+| **Live 3** (CPC 51, ter 02/06) | `185203753382578061` |
+| **Live 4** (7 Pegadinhas, qui 11/06) | `185203758274184695` |
+| **Live Final** (Lançamento, qui 18/06) | `185203765515650231` |
+
+### Custom fields (configurados)
+- `origem` · `pagina_captura` · `referrer` · `utm_source` · `utm_medium` · `utm_campaign` · `dispositivo` · `ref_in`
+
+### Templates de email (em `email-templates/`)
+
+**~57 emails HTML** prontos, email-safe (Gmail/Outlook/mobile), visual Fluência oficial. Preview local em `http://localhost:3000/email-templates/` ou `dev.fluenciacontabil.com.br/email-templates/`.
+
+Organização:
+- `sequencia-a/` — 5 emails Newsletter (A1-A5), automation
+- `sequencia-b/` — 6 emails Lista de Espera (B1-B6), automation
+- `sequencia-c/` — **6 emails Lead Magnet Dicionário (C1-C6), automation ⭐ CANAL PRINCIPAL**
+- `sequencia-live/` — 19 emails (4 × 4 lives + 3 Live Final + E4 Final variante)
+- `broadcasts/convites-lives/` — 10 broadcasts (D-3 + D-0 × 5 lives), scheduled
+- `broadcasts/lancamento/` — 9 emails (L1-L8 + extra "última hora"), scheduled
+
+Scripts auxiliares (em `scripts/`):
+- `generate_live_emails.py` — regenera 15 emails das Lives 2/3/4/Final a partir da Live 1
+- `generate_live_invites.py` — regenera 8 broadcasts de convite (D-3+D-0)
+
+**Placeholders pendentes antes de ativar:** `{PRECO_*}`, `{LINK_VENDAS}`, `{VAGAS_RESTANTES}`, URL da Aula 01 PDF (B5 + C5 + extra).
+
+### Segmentos de broadcast (atualizados 19/04/2026)
+
+Com a criação da Sequência C, todos os broadcasts de convite pras lives e a maioria dos broadcasts de lançamento passam a **incluir o group Lead Magnet Dicionário**:
+
+| Broadcast | Segmento |
+|---|---|
+| D-3 e D-0 (5 lives) | Newsletter + Lista + **Lead Magnet** |
+| L1 (faltam 10 dias) | Lista + Newsletter engajada + **Lead Magnet engajada** |
+| L2 (teaser modalidades) | Lista (interno) |
+| L3 (DIA D) | Todos (Lista + Newsletter + Lead Magnet) |
+| L4 (ROI) | Lista + **Lead Magnet** (excl. Live Final) |
+| L5 (vagas + depoimento) | Lista (restrito — lead quase comprador) |
+| L6 (5 dias) | Lista + **Lead Magnet engajada** |
+| L7 (48h + FAQ) | Lista + Newsletter + **Lead Magnet** |
+| L8 (último dia) | Todos |
+| Extra "última hora" | Newsletter OU Live 4 OU **Lead Magnet** entre 13-17/06 |
 
 ---
 

@@ -15,6 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Balanço Patrimonial: entenda a estrutura de uma vez por todas | Fluência Contábil">
 <meta name="twitter:description" content="Guia completo sobre a estrutura do Balanço Patrimonial para concursos públicos. Ativo circulante, não circulante, passivo e PL com lançamentos contábeis e exemplos práticos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
@@ -45,7 +47,7 @@
 :root {
   --azul-profundo: #1B2A4A;
   --azul-medio: #1E3A5F;
-  --dourado: #C9A84C;
+  --dourado: #C8A84B;
   --cream: #FBF6E9;
   --branco: #FFFFFF;
   --texto: #2C2C2C;
@@ -404,6 +406,11 @@ footer { background: #0E1929; padding: 50px 5% 30px; }
 /* Blog nav logo image */
 .nav-logo img{height:48px!important;width:auto!important;display:block!important;}
 @media(max-width:1100px){.nav-logo img{height:40px!important;}}
+
+/* Acessibilidade: respeita preferencia do sistema por menos movimento */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}
+}
 </style>
 <link rel="stylesheet" href="../assets/email-capture.css">
 <script src="../assets/email-capture.js" defer></script>
@@ -677,7 +684,7 @@ footer { background: #0E1929; padding: 50px 5% 30px; }
   <aside class="sidebar">
     <div class="sidebar-card">
       <h3>Sobre o Professor</h3>
-    <img src="../assets/foto-vinicius.jpg" alt="Vinícius Ferraz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;background:#1B2A4A;">
+    <img src="../assets/foto-vinicius.jpg" alt="Vinícius Ferraz" style="width:72px;height:72px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;background:#1B2A4A;" loading="eager" decoding="async">
     <p>Vinícius Ferraz — Auditor Fiscal, professor de contabilidade e criador do método Fluência Contábil.</p>
     <a href="../professor.html">Saiba mais &rarr;</a>
     </div>
@@ -796,10 +803,10 @@ function subscribeNewsletter(formEl) {
   var data = new URLSearchParams({ email: email, origem: 'Blog' });
   fetch('https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec', { method: 'POST', body: data, mode: 'no-cors' })
   .then(function() {
-    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
+    formEl.innerHTML = '<p style="color:var(--dourado);font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
   })
   .catch(function() {
-    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
+    formEl.innerHTML = '<p style="color:var(--dourado);font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
   });
 }
 </script>

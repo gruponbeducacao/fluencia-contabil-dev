@@ -15,9 +15,12 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Blog","name":"Blog Fluência Contábil","description":"Contabilidade para concursos públicos","url":"https://fluenciacontabil.com.br/blog","author":{"@type":"Person","name":"Vinícius Ferraz"}}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-:root{--azul:#1B2A4A;--azul-med:#2A3F6F;--dourado:#C9A84C;--dourado-esc:#A68A3E;--cream:#FBF6E9;--texto:#222;--texto-suave:#5A6A7E;--branco:#FFFFFF;}
+/* CSS especifico da pagina (restaurado apos migracao) */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;color:var(--texto);background:var(--branco);overflow-x:hidden;padding-top:102px;}
@@ -83,7 +86,7 @@ footer{background:#0E1929;padding:60px 5% 32px;}
 /* ── CATEGORY PILLS ── */
 .cat-pill{display:inline-block;padding:4px 12px;border-radius:2px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
 .cat-fundamentos{background:#1B2A4A;color:#fff;}
-.cat-cpc{background:#C9A84C;color:#1B2A4A;}
+.cat-cpc{background:var(--dourado);color:#1B2A4A;}
 .cat-demonstracoes{background:#1E3A5F;color:#fff;}
 .cat-bancas{background:#8B2E2E;color:#fff;}
 .cat-concursos{background:#2E6B4F;color:#fff;}
@@ -159,13 +162,13 @@ aside{position:sticky;top:100px;align-self:start;}
 .hamburger.active span:nth-child(1){top:22px;transform:rotate(45deg);}
 .hamburger.active span:nth-child(2){opacity:0;}
 .hamburger.active span:nth-child(3){top:22px;transform:rotate(-45deg);}
-.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#1B2A4A;z-index:280;flex-direction:column;padding:12px 0;border-bottom:3px solid #C9A84C;box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#1B2A4A;z-index:280;flex-direction:column;padding:12px 0;border-bottom:3px solid var(--dourado);box-shadow:0 8px 32px rgba(0,0,0,0.3);}
 .mobile-menu.active{display:flex;}
 .mobile-menu a{display:block;text-decoration:none;color:rgba(255,255,255,0.85);font-size:15px;font-weight:600;padding:15px 24px;border-bottom:1px solid rgba(255,255,255,0.06);transition:color 0.2s;}
-.mobile-menu a:hover,.mobile-menu a:active{color:#C9A84C;}
+.mobile-menu a:hover,.mobile-menu a:active{color:var(--dourado);}
 .mobile-menu .mob-social{display:flex;gap:24px;padding:12px 24px;border-top:1px solid rgba(201,168,76,0.15);margin-top:4px;}
 .mobile-menu .mob-social a{padding:10px 0;border-bottom:none;font-size:14px;}
-.mobile-menu .mob-btn{display:block;margin:12px 20px 16px;background:#C9A84C;color:#1B2A4A;padding:16px 24px;border-radius:3px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;border-bottom:none;}
+.mobile-menu .mob-btn{display:block;margin:12px 20px 16px;background:var(--dourado);color:#1B2A4A;padding:16px 24px;border-radius:3px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;border-bottom:none;}
 
 @media(max-width:1199px){
   .blog-content{grid-template-columns:1fr;}
@@ -303,7 +306,7 @@ aside{position:sticky;top:100px;align-self:start;}
   <meta itemprop="author" content="Vinícius Ferraz">
   <meta itemprop="datePublished" content="2026-04-03">
   <a href="blog/cpc-26-o-que-as-bancas-cobram.html" itemprop="url">
-    <div class="post-card-img" style="background:linear-gradient(135deg,#C9A84C 0%,#A68A3E 100%);">
+    <div class="post-card-img" style="background:linear-gradient(135deg,var(--dourado) 0%,#A68A3E 100%);">
       <div class="img-placeholder">📊</div>
     </div>
     <div class="card-body">
@@ -360,7 +363,7 @@ aside{position:sticky;top:100px;align-self:start;}
   <meta itemprop="author" content="Vinícius Ferraz">
   <meta itemprop="datePublished" content="2026-03-14">
   <a href="blog/cpc-00-estrutura-conceitual.html" itemprop="url">
-    <div class="post-card-img" style="background:linear-gradient(135deg,#C9A84C 0%,#8B7530 100%);">
+    <div class="post-card-img" style="background:linear-gradient(135deg,var(--dourado) 0%,#8B7530 100%);">
       <div class="img-placeholder">📖</div>
     </div>
     <div class="card-body">
@@ -609,10 +612,10 @@ function subscribeNewsletter(formEl) {
   var data = new URLSearchParams({ email: email, origem: 'Blog' });
   fetch('https://script.google.com/macros/s/AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_/exec', { method: 'POST', body: data, mode: 'no-cors' })
   .then(function() {
-    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
+    formEl.innerHTML = '<p style="color:var(--dourado);font-weight:700;font-size:15px;">✅ Inscrito com sucesso! Você receberá nossos próximos artigos.</p>';
   })
   .catch(function() {
-    formEl.innerHTML = '<p style="color:#C9A84C;font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
+    formEl.innerHTML = '<p style="color:var(--dourado);font-weight:700;font-size:15px;">✅ Inscrito com sucesso!</p>';
   });
 }
 </script>
