@@ -175,3 +175,130 @@ footer{background:var(--azul-profundo);padding:60px 5% 32px;}
   .ft-grid{grid-template-columns:1fr;}
   .ft-bottom{flex-direction:column;align-items:flex-start;}
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   ONDA 4 OUSADA — TESTE EM DEV
+   Gradients dramáticos, glow, gradient text, shadows coloridas.
+   Tudo respeita prefers-reduced-motion via @media global.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Hero dramático: mesh gradient diagonal + acentos de cor.
+   Muito mais visível que gradient sutil. */
+.hero-dramatic{
+  background:
+    radial-gradient(ellipse 80% 60% at 0% 0%, rgba(200,168,75,0.22) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 80% at 100% 100%, rgba(61,90,153,0.55) 0%, transparent 55%),
+    linear-gradient(135deg, #2A3F6F 0%, #1B2A4A 45%, #0E1929 100%) !important;
+  position: relative;
+}
+.hero-dramatic::after{
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events:none;
+  z-index:0;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-dramatic > *{ position:relative; z-index:1; }
+
+/* Palavra-chave com gradient dourado — destaque editorial moderno. */
+.goldtext{
+  background: linear-gradient(135deg, #E8C964 0%, #C8A84B 50%, #9a7d2e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* CTA final dramático: gradient azul profundo + textura. */
+.cta-dramatic{
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 120%, rgba(200,168,75,0.18) 0%, transparent 60%),
+    linear-gradient(180deg, var(--azul-med) 0%, var(--azul) 60%, var(--azul-profundo) 100%) !important;
+  position: relative; overflow:hidden;
+}
+.cta-dramatic::before{
+  content:''; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events:none;
+}
+.cta-dramatic > *{ position:relative; z-index:1; }
+
+/* Botão vermelho com GLOW pulsante — chama atenção pro CTA. */
+.btn-glow{
+  box-shadow:
+    0 0 0 0 rgba(192,57,43,0.7),
+    0 8px 24px rgba(192,57,43,0.35);
+  animation: pulse-glow 2.4s ease-in-out infinite;
+  position: relative;
+}
+@keyframes pulse-glow{
+  0%,100%{ box-shadow: 0 0 0 0 rgba(192,57,43,0.6), 0 8px 24px rgba(192,57,43,0.25); }
+  50%    { box-shadow: 0 0 0 10px rgba(192,57,43,0), 0 16px 40px rgba(192,57,43,0.45); }
+}
+
+/* Card destacado: borda dourada + shadow azul + lift maior.
+   !important pra vencer estilos inline das páginas individuais. */
+.card-bold{
+  box-shadow: 0 1px 3px rgba(27,42,74,0.08), 0 12px 32px rgba(27,42,74,0.12) !important;
+  transition: box-shadow 0.3s cubic-bezier(.2,.8,.2,1),
+              transform 0.3s cubic-bezier(.2,.8,.2,1),
+              border-color 0.3s cubic-bezier(.2,.8,.2,1) !important;
+}
+.card-bold:hover{
+  box-shadow: 0 4px 12px rgba(27,42,74,0.15), 0 24px 56px rgba(27,42,74,0.28),
+              0 0 0 2px rgba(200,168,75,0.5) !important;
+  transform: translateY(-8px) !important;
+  border-color: var(--dourado) !important;
+}
+@media(hover:none){
+  .card-bold:hover{ transform:none; }
+}
+
+/* Separador dourado com SHIMMER animado. */
+.bar-shimmer{
+  width: 64px; height: 3px;
+  background: linear-gradient(90deg,
+    rgba(200,168,75,0.3) 0%,
+    #C8A84B 40%,
+    #F5DC7A 50%,
+    #C8A84B 60%,
+    rgba(200,168,75,0.3) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  margin-bottom: 28px;
+}
+@keyframes shimmer{
+  0%,100%{ background-position: 100% 0; }
+  50%   { background-position: 0 0; }
+}
+
+/* Scroll reveal OUSADO: scale + translate + opacity. */
+.reveal-bold{
+  opacity: 0;
+  transform: translateY(32px) scale(0.96);
+  transition: opacity 0.7s cubic-bezier(.16,1,.3,1),
+              transform 0.7s cubic-bezier(.16,1,.3,1);
+}
+.reveal-bold.is-in{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Pro tablet+, adiciona stagger delay via nth-child. */
+.reveal-bold:nth-child(2){ transition-delay: 0.08s; }
+.reveal-bold:nth-child(3){ transition-delay: 0.16s; }
+.reveal-bold:nth-child(4){ transition-delay: 0.24s; }
+
+/* Text-shadow forte no H1 de hero dramático. */
+.hero-dramatic h1{
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+}
