@@ -203,7 +203,11 @@ footer{background:var(--azul-profundo);padding:60px 5% 32px;}
   mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
 }
-.hero-dramatic > *{ position:relative; z-index:1; }
+/* .hero-dramatic > * removido — sobrescrevia position:absolute dos elementos
+   decorativos (.hero-bg, .hero-glow, .hero-logo-wrap) e quebrava o grid em
+   desktop (eles viravam grid items). Os filhos de conteúdo .hero-left e
+   .hero-right já têm position:relative;z-index:2 no CSS original, suficiente
+   pra ficarem acima do ::after (z-index:0). */
 
 /* Palavra-chave com gradient dourado — destaque editorial moderno. */
 .goldtext{
