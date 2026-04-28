@@ -103,6 +103,8 @@ body{font-family:'Montserrat',sans-serif;color:var(--texto);background:var(--bra
 .mobile-menu .mob-social{display:flex;gap:24px;padding:12px 24px;border-top:1px solid rgba(201,168,76,0.15);margin-top:4px;}
 .mobile-menu .mob-social a{padding:10px 0;border-bottom:none;font-size:14px;}
 .mobile-menu .mob-btn{display:block;margin:12px 20px 16px;background:var(--dourado);color:var(--azul);padding:16px 24px;border-radius:3px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;border-bottom:none;}
+.mobile-menu .mob-btn-portal{display:block;margin:0 20px 16px;background:var(--dourado);color:var(--azul);padding:16px 24px;border-radius:3px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-align:center;text-decoration:none;border-bottom:none;transition:background 0.2s;}
+.mobile-menu .mob-btn-portal:hover,.mobile-menu .mob-btn-portal:active{background:var(--dourado-esc);color:var(--azul);}
 
 /* ── COMPONENTES TIPOGRÁFICOS ── */
 .lbl{display:block;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--dourado);margin-bottom:10px;}
