@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="5 lives gratuitas de pré-lançamento do curso Fluência Contábil. Uma jornada de contabilidade pra concursos, pela lógica de um idioma. Inscrição gratuita.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="canonical" href="https://fluenciacontabil.com.br/lives.html">
+<meta property="og:title" content="5 Lives Gratuitas — Fluência Contábil">
+<meta property="og:description" content="Uma jornada de contabilidade pra concursos, pela lógica de um idioma. 5 lives gratuitas antes do lançamento.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fluenciacontabil.com.br/lives.html">
+<meta property="og:site_name" content="Fluência Contábil">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<title>5 Lives Gratuitas — Fluência Contábil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#1B2A4A;--azul-med:#2A3F6F;--dourado:#C8A84B;--dourado-esc:#A68A3E;--cream:#FBF6E9;--cinza:#F5F5F5;--texto:#1A1A1A;--branco:#FFFFFF;--vermelho:#C0392B;--verde:#25D366;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;color:var(--texto);background:var(--branco);overflow-x:hidden;padding-top:102px;}
+
+#topbar{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--dourado);color:var(--azul);text-align:center;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;}
+#mainNav{position:fixed;top:30px;left:0;right:0;z-index:290;height:72px;background:rgba(27,42,74,0.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,75,0.2);display:flex;align-items:center;padding:0 4%;gap:24px;transition:top 0.3s,box-shadow 0.3s;}
+#mainNav.scrolled{top:0;box-shadow:0 4px 24px rgba(0,0,0,0.35);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.nav-logo img{height:42px;width:auto;display:block;}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;flex:1;margin-left:8px;}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,0.65);font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;padding:8px 10px;border-radius:2px;transition:all 0.2s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--dourado);background:rgba(200,168,75,0.08);}
+.nav-btn{background:var(--dourado);color:var(--azul);padding:10px 18px;border-radius:2px;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.2s;}
+.nav-btn:hover{background:var(--dourado-esc);color:var(--branco);}
+@media(max-width:900px){.nav-links{display:none;}}
+
+.btn-p{display:inline-block;background:var(--dourado);color:var(--azul);padding:14px 34px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border-radius:2px;border:2px solid var(--dourado);transition:all 0.2s;cursor:pointer;font-family:'Montserrat',sans-serif;}
+.btn-p:hover{background:var(--dourado-esc);border-color:var(--dourado-esc);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,168,75,0.3);}
+.lbl{display:block;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--dourado);margin-bottom:10px;}
+.bar{width:44px;height:3px;background:var(--dourado);margin-bottom:28px;}
+.h2{font-size:clamp(22px,3vw,38px);font-weight:900;color:var(--azul);line-height:1.1;letter-spacing:-0.5px;margin-bottom:16px;}
+.h2.lgt{color:var(--branco);}
+.body-t{font-size:15px;line-height:1.8;color:#555;font-family:'Source Serif 4',serif;}
+.inner{max-width:1200px;margin-inline:auto;}
+.bg-grid{background-image:linear-gradient(rgba(200,168,75,0.055) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,0.055) 1px,transparent 1px);background-size:60px 60px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(192,57,43,0.6)}50%{transform:scale(1.04);box-shadow:0 0 0 12px rgba(192,57,43,0)}}
+
+/* HERO */
+#hero{min-height:92vh;background:var(--azul);display:grid;grid-template-columns:1.15fr 480px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-glow{position:absolute;top:-150px;left:22%;width:620px;height:620px;background:radial-gradient(circle,rgba(61,90,153,0.35) 0%,transparent 65%);pointer-events:none;}
+.hero-left{padding:80px 5%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);padding:7px 14px;border-radius:2px;margin-bottom:32px;width:fit-content;}
+.hero-badge-dot{width:6px;height:6px;background:var(--dourado);border-radius:50%;animation:blink 2s infinite;}
+.hero-badge span{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dourado);}
+.hero-title{font-size:clamp(32px,4.3vw,56px);font-weight:900;line-height:1.05;color:var(--branco);letter-spacing:-1.5px;margin-bottom:24px;}
+.hero-title em{font-style:normal;color:var(--dourado);}
+.hero-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,0.6);font-family:'Source Serif 4',serif;max-width:560px;margin-bottom:36px;}
+.hero-sub strong{color:rgba(255,255,255,0.92);font-weight:600;}
+.hero-trust{display:flex;gap:24px;flex-wrap:wrap;margin-top:8px;}
+.hero-trust div{font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:8px;}
+.hero-trust svg{color:var(--dourado);flex-shrink:0;}
+
+.hero-right{background:rgba(200,168,75,0.06);border-left:1px solid rgba(200,168,75,0.15);padding:60px 44px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;}
+.form-mockup{margin:0 auto 28px;width:230px;background:linear-gradient(160deg,var(--azul) 0%,var(--azul-med) 100%);border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(200,168,75,0.25);padding:22px 18px;position:relative;overflow:hidden;}
+.form-mockup::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--dourado);}
+.mock-hd{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:2.5px;color:var(--dourado);text-transform:uppercase;text-align:center;margin-bottom:14px;}
+.mock-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(200,168,75,0.15);}
+.mock-row:last-child{border-bottom:none;}
+.mock-num{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:rgba(200,168,75,0.15);color:var(--dourado);font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.mock-info{flex:1;min-width:0;}
+.mock-date{font-size:8px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.4);text-transform:uppercase;}
+.mock-title{font-size:11px;font-weight:600;color:var(--branco);line-height:1.25;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.form-title{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);text-align:center;margin-bottom:18px;}
+.form-h{font-size:20px;font-weight:800;color:var(--branco);line-height:1.25;text-align:center;margin-bottom:22px;letter-spacing:-0.3px;}
+.form-h em{color:var(--dourado);font-style:normal;}
+form.lead-form{display:flex;flex-direction:column;gap:12px;}
+form.lead-form input{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:3px;padding:14px 16px;font-size:14px;font-family:'Montserrat',sans-serif;color:var(--branco);transition:all 0.2s;}
+form.lead-form input::placeholder{color:rgba(255,255,255,0.35);}
+form.lead-form input:focus{outline:none;border-color:var(--dourado);background:rgba(200,168,75,0.06);}
+form.lead-form button{margin-top:4px;width:100%;background:var(--dourado);color:var(--azul);padding:15px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.2s;}
+form.lead-form button:hover{background:var(--dourado-esc);color:var(--branco);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,168,75,0.3);}
+.form-legal{font-size:10px;color:rgba(255,255,255,0.35);text-align:center;margin-top:14px;letter-spacing:0.5px;line-height:1.55;}
+.form-err{display:none;font-size:11px;color:#ff9c8a;padding:8px 12px;background:rgba(255,100,80,0.08);border-left:2px solid #ff9c8a;margin-top:4px;}
+
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;}
+  .hero-right{border-left:none;border-top:1px solid rgba(200,168,75,0.15);}
+  .hero-left{padding:60px 5% 40px;}
+}
+
+/* AGENDA DAS LIVES */
+#agenda{padding:100px 5%;background:var(--cream);}
+.live-grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:880px;margin:0 auto;}
+.live-card{background:var(--branco);border:1px solid rgba(27,42,74,0.1);border-radius:6px;padding:28px 32px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;transition:all 0.25s;position:relative;overflow:hidden;}
+.live-card:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(27,42,74,0.10);border-color:rgba(200,168,75,0.45);}
+.live-card.is-live{border:2px solid var(--vermelho);box-shadow:0 14px 36px rgba(192,57,43,0.18);}
+.live-card.is-final{background:linear-gradient(135deg,var(--azul) 0%,var(--azul-med) 100%);border:2px solid var(--dourado);color:var(--branco);}
+.live-card.is-final .live-num{background:var(--dourado);color:var(--azul);}
+.live-card.is-final .live-date{color:rgba(255,255,255,0.65);}
+.live-card.is-final .live-title{color:var(--branco);}
+.live-card.is-final .live-desc{color:rgba(255,255,255,0.7);}
+.live-num{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:var(--azul);color:var(--branco);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.live-info{min-width:0;}
+.live-date{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dourado);margin-bottom:4px;}
+.live-title{font-size:18px;font-weight:800;color:var(--azul);line-height:1.3;margin-bottom:4px;}
+.live-desc{font-size:14px;line-height:1.55;color:#555;font-family:'Source Serif 4',serif;}
+.live-status{flex-shrink:0;display:flex;align-items:center;justify-content:center;min-width:140px;}
+.status-tag{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;border-radius:3px;}
+.status-upcoming{background:rgba(27,42,74,0.06);color:var(--azul-med);}
+.status-live{background:var(--vermelho);color:var(--branco);animation:pulse 1.6s infinite;}
+.status-replay{background:var(--cream);color:var(--azul);border:1px solid rgba(27,42,74,0.18);text-decoration:none;}
+.status-replay:hover{background:var(--azul);color:var(--branco);border-color:var(--azul);}
+.status-dot{width:7px;height:7px;border-radius:50%;background:currentColor;}
+.status-tag.status-live .status-dot{background:var(--branco);animation:blink 1s infinite;}
+@media(max-width:700px){
+  .live-card{grid-template-columns:auto 1fr;gap:16px;padding:22px 20px;}
+  .live-status{grid-column:1/-1;justify-content:flex-start;margin-top:8px;}
+  .live-num{width:40px;height:40px;font-size:15px;}
+  .live-title{font-size:16px;}
+}
+
+/* PRO QUEM */
+#proquem{padding:100px 5%;background:var(--azul);position:relative;overflow:hidden;}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px;}
+.check-item{background:rgba(200,168,75,0.06);border:1px solid rgba(200,168,75,0.15);border-radius:4px;padding:22px 24px;display:flex;align-items:flex-start;gap:14px;}
+.check-item p{font-size:14px;line-height:1.55;color:rgba(255,255,255,0.78);font-family:'Source Serif 4',serif;}
+.check-ico{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--dourado);color:var(--azul);display:flex;align-items:center;justify-content:center;}
+.check-item.key{background:rgba(200,168,75,0.14);border-color:var(--dourado);}
+.check-item.key p{color:var(--branco);font-weight:600;}
+
+/* QUEM TE ENSINA */
+#prof{padding:100px 5%;background:var(--cream);}
+.prof-wrap{display:grid;grid-template-columns:340px 1fr;gap:60px;align-items:center;}
+.prof-img-w{position:relative;}
+.prof-img-w img{width:100%;border-radius:6px;border:1px solid rgba(27,42,74,0.1);box-shadow:0 20px 50px rgba(27,42,74,0.15);}
+.prof-num-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0;max-width:500px;}
+.prof-num{background:var(--branco);border:1px solid rgba(27,42,74,0.08);border-radius:4px;padding:18px 22px;}
+.prof-num strong{display:block;font-size:28px;font-weight:900;color:var(--azul);line-height:1;}
+.prof-num span{display:block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#777;margin-top:6px;}
+@media(max-width:900px){.prof-wrap{grid-template-columns:1fr;gap:32px;}.prof-img-w{max-width:280px;margin:0 auto;}}
+
+/* BÔNUS */
+#bonus{padding:100px 5%;background:var(--branco);}
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+.bonus-card{background:var(--cream);border:1px solid rgba(200,168,75,0.25);border-radius:6px;padding:32px 28px;text-align:left;transition:all 0.2s;}
+.bonus-card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(27,42,74,0.10);}
+.bonus-ico{display:inline-flex;width:52px;height:52px;background:var(--azul);color:var(--dourado);border-radius:6px;align-items:center;justify-content:center;margin-bottom:18px;font-size:24px;}
+.bonus-card h3{font-size:18px;font-weight:800;color:var(--azul);line-height:1.3;margin-bottom:10px;}
+.bonus-card p{font-size:14px;line-height:1.65;color:#555;font-family:'Source Serif 4',serif;}
+.bonus-meta{display:inline-block;margin-top:12px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--dourado);}
+
+/* FAQ */
+#faq{padding:100px 5%;background:var(--cream);}
+.faq-list{max-width:780px;margin:36px auto 0;}
+.faq-item{background:var(--branco);border:1px solid rgba(27,42,74,0.08);border-radius:4px;padding:22px 26px;margin-bottom:14px;}
+.faq-q{font-size:16px;font-weight:800;color:var(--azul);line-height:1.4;margin-bottom:10px;}
+.faq-a{font-size:14px;line-height:1.7;color:#555;font-family:'Source Serif 4',serif;}
+.faq-a strong{color:var(--azul);}
+
+/* CTA FUNDO */
+#cta-fundo{padding:100px 5%;background:var(--azul);position:relative;overflow:hidden;}
+.cta-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2;}
+.cta-bullets{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+.cta-bullet{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.78);font-size:14px;font-family:'Source Serif 4',serif;}
+.cta-bullet svg{flex-shrink:0;color:var(--dourado);}
+.cta-form-w{background:var(--branco);border-radius:6px;padding:40px 32px;box-shadow:0 20px 50px rgba(0,0,0,0.25);}
+.cta-form-w .form-title{color:#888;}
+.cta-form-w .form-h{color:var(--azul);}
+.cta-form-w .form-h em{color:var(--dourado);}
+.cta-form-w form.lead-form input{background:#FAFAFA;border:1px solid #E0E0E0;color:var(--texto);}
+.cta-form-w form.lead-form input::placeholder{color:#999;}
+.cta-form-w form.lead-form input:focus{border-color:var(--dourado);background:var(--branco);}
+.cta-form-w .form-legal{color:#999;}
+.cta-form-w .form-err{color:var(--vermelho);background:rgba(192,57,43,0.06);border-color:var(--vermelho);}
+@media(max-width:900px){.cta-wrap{grid-template-columns:1fr;gap:32px;}}
+
+/* FOOTER */
+footer{background:#0F1A30;color:rgba(255,255,255,0.65);padding:70px 5% 40px;}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;}
+.ft-col h4{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--dourado);margin-bottom:18px;}
+.ft-col ul{list-style:none;}
+.ft-col li{margin-bottom:10px;}
+.ft-col a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;transition:color 0.2s;}
+.ft-col a:hover{color:var(--dourado);}
+.ft-col p{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.55);font-family:'Source Serif 4',serif;}
+.ft-logo{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.ft-logo img{height:42px;width:auto;}
+.ft-logo-txt{display:flex;flex-direction:column;line-height:1.1;}
+.ft-logo-txt .n1{font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--branco);}
+.ft-logo-txt .n2{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--dourado);margin-top:2px;}
+.ft-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:rgba(255,255,255,0.32);text-align:center;line-height:1.7;}
+@media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:600px){.ft-grid{grid-template-columns:1fr;}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+
+<div id="topbar">🎤 5 Lives Gratuitas — Pré-lançamento Fluência Contábil &nbsp;·&nbsp; Mai–Jun 2026</div>
+
+<nav id="mainNav">
+  <a href="https://fluenciacontabil.com.br/" class="nav-logo" aria-label="Fluência Contábil">
+    <picture><source srcset="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.webp" type="image/webp"><img src="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.png" alt="Fluência Contábil"></picture>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://fluenciacontabil.com.br/">Home</a></li>
+    <li><a href="https://fluenciacontabil.com.br/cursos.html">Cursos</a></li>
+    <li><a href="https://fluenciacontabil.com.br/professor.html">Professor</a></li>
+    <li><a href="https://fluenciacontabil.com.br/blog.html">Blog</a></li>
+    <li><a href="lives.html" class="active">Lives</a></li>
+  </ul>
+  <a href="#form-topo" class="nav-btn">Garantir vaga</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><span class="hero-badge-dot"></span><span>5 Lives Gratuitas · Mai–Jun 2026</span></div>
+    <h1 class="hero-title">5 lives gratuitas.<br>Uma <em>jornada</em> antes do lançamento.</h1>
+    <p class="hero-sub">Em 4 semanas, o Prof. Vinícius Ferraz vai te mostrar — ao vivo — como <strong>contabilidade pra concurso é um idioma</strong>. Cinco encontros costurados, cada um aprofundando uma camada da fluência. No último, dia <strong>18 de junho</strong>, algo especial vai acontecer.</p>
+    <div class="hero-trust">
+      <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Inscrição única, 5 lives</div>
+      <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Replay disponível</div>
+      <div><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>100% gratuito</div>
+    </div>
+  </div>
+
+  <aside class="hero-right" id="form-topo">
+    <div class="form-mockup" aria-hidden="true">
+      <div class="mock-hd">Agenda · 5 lives</div>
+      <div class="mock-row"><div class="mock-num">1</div><div class="mock-info"><div class="mock-date">qui · 21/05 · 20h</div><div class="mock-title">Débito e Crédito</div></div></div>
+      <div class="mock-row"><div class="mock-num">2</div><div class="mock-info"><div class="mock-date">qui · 28/05 · 20h</div><div class="mock-title">Os 5 CPCs que caem</div></div></div>
+      <div class="mock-row"><div class="mock-num">3</div><div class="mock-info"><div class="mock-date">ter · 02/06 · 20h</div><div class="mock-title">CPC 51</div></div></div>
+      <div class="mock-row"><div class="mock-num">4</div><div class="mock-info"><div class="mock-date">qui · 11/06 · 20h</div><div class="mock-title">7 Pegadinhas de banca</div></div></div>
+      <div class="mock-row"><div class="mock-num">★</div><div class="mock-info"><div class="mock-date">qui · 18/06 · 20h</div><div class="mock-title">Live Final · Lançamento</div></div></div>
+    </div>
+    <div class="form-title">Inscrição gratuita</div>
+    <h2 class="form-h">Garanta sua <em>vaga</em> nas 5 lives</h2>
+    <form class="lead-form" id="leadFormTop" novalidate>
+      <input type="text" name="nome" id="nome1" placeholder="Seu nome completo" required autocomplete="name">
+      <input type="email" name="email" id="email1" placeholder="Seu melhor e-mail" required autocomplete="email">
+      <input type="tel" name="telefone" id="tel1" placeholder="WhatsApp com DDD (ex: 11 99999-0000)" required autocomplete="tel" inputmode="tel">
+      <div class="form-err" id="err1"></div>
+      <button type="submit">QUERO MINHA VAGA — É GRÁTIS</button>
+    </form>
+    <p class="form-legal">⚡ Confirmação imediata · 🔒 Sem spam · Cancele quando quiser.</p>
+  </aside>
+</section>
+
+<!-- AGENDA DAS LIVES -->
+<section id="agenda">
+  <div class="inner" style="text-align:center;max-width:680px;margin:0 auto 50px;">
+    <span class="lbl" style="display:inline-block;">Agenda</span>
+    <div class="bar" style="margin:10px auto 28px;"></div>
+    <h2 class="h2">As 5 lives, em ordem.</h2>
+    <p class="body-t">Cada uma com tema próprio. Juntas, formam a base do método. <strong>Uma inscrição cobre as 5</strong> — você não precisa fazer nada a mais.</p>
+  </div>
+
+  <div class="live-grid">
+    <article class="live-card" data-live="1" data-start="2026-05-21T20:00:00-03:00">
+      <div class="live-num">1</div>
+      <div class="live-info">
+        <div class="live-date">Quinta · 21/05 · 20h</div>
+        <div class="live-title">Por que você erra Débito e Crédito (e como parar)</div>
+        <div class="live-desc">Os códigos básicos da contabilidade. Entender com 100% de fluência destrava todo o resto. Sem decoreba.</div>
+      </div>
+      <div class="live-status" data-status></div>
+    </article>
+
+    <article class="live-card" data-live="2" data-start="2026-05-28T20:00:00-03:00">
+      <div class="live-num">2</div>
+      <div class="live-info">
+        <div class="live-date">Quinta · 28/05 · 20h</div>
+        <div class="live-title">50 CPCs. Banca cobra 5. Quais?</div>
+        <div class="live-desc">Os pronunciamentos contábeis que mais aparecem em prova fiscal. Foco no que dá ponto.</div>
+      </div>
+      <div class="live-status" data-status></div>
+    </article>
+
+    <article class="live-card" data-live="3" data-start="2026-06-02T20:00:00-03:00">
+      <div class="live-num">3</div>
+      <div class="live-info">
+        <div class="live-date">Terça · 02/06 · 20h</div>
+        <div class="live-title">O CPC que matou o CPC 26. Será?</div>
+        <div class="live-desc">CPC 51 e o impacto na consolidação. Tema "difícil" tratado pela lógica do idioma.</div>
+      </div>
+      <div class="live-status" data-status></div>
+    </article>
+
+    <article class="live-card" data-live="4" data-start="2026-06-11T20:00:00-03:00">
+      <div class="live-num">4</div>
+      <div class="live-info">
+        <div class="live-date">Quinta · 11/06 · 20h</div>
+        <div class="live-title">7 pegadinhas que as bancas adoram. Erre 3 e reprove.</div>
+        <div class="live-desc">As armadilhas mais frequentes em prova. Você sai sabendo o que olhar duas vezes no enunciado.</div>
+      </div>
+      <div class="live-status" data-status></div>
+    </article>
+
+    <article class="live-card is-final" data-live="final" data-start="2026-06-18T20:00:00-03:00">
+      <div class="live-num">★</div>
+      <div class="live-info">
+        <div class="live-date">🚨 Quinta · 18/06 · 20h</div>
+        <div class="live-title">Live Final — Lançamento oficial do Fluência Contábil</div>
+        <div class="live-desc">Algo especial vai acontecer ao vivo nessa noite. Vale estar presente — não só pelo replay.</div>
+      </div>
+      <div class="live-status" data-status></div>
+    </article>
+  </div>
+</section>
+
+<!-- PRO QUEM É -->
+<section id="proquem">
+  <div class="hero-bg bg-grid" style="opacity:0.4;"></div>
+  <div class="inner" style="position:relative;z-index:2;max-width:900px;">
+    <span class="lbl">Pra quem é</span>
+    <div class="bar"></div>
+    <h2 class="h2 lgt">Essa série é pra quem...</h2>
+
+    <div class="check-grid">
+      <div class="check-item">
+        <span class="check-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <p>Tem contabilidade no edital e quer parar de decorar pra começar a entender</p>
+      </div>
+      <div class="check-item">
+        <span class="check-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <p>Trava nos enunciados longos e nos sinônimos técnicos da banca</p>
+      </div>
+      <div class="check-item">
+        <span class="check-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <p>Estuda em casa, acerta os exercícios e mesmo assim erra na prova</p>
+      </div>
+      <div class="check-item">
+        <span class="check-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <p>Quer ver como o método Fluência funciona antes de decidir pelo curso</p>
+      </div>
+      <div class="check-item">
+        <span class="check-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <p>Não é (e não quer virar) contador — só precisa passar na prova com ponto forte</p>
+      </div>
+      <div class="check-item key">
+        <span class="check-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <p>Está disposto(a) a aparecer ao vivo nas próximas 4 semanas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM TE ENSINA -->
+<section id="prof">
+  <div class="inner">
+    <div class="prof-wrap">
+      <div class="prof-img-w">
+        <picture><source srcset="assets/foto-vinicius.webp" type="image/webp"><img src="assets/foto-vinicius.jpg" alt="Prof. Vinícius Ferraz"></picture>
+      </div>
+      <div>
+        <span class="lbl">Quem te ensina</span>
+        <div class="bar"></div>
+        <h2 class="h2">Prof. Vinícius Ferraz</h2>
+        <p class="body-t" style="margin-bottom:18px;">Auditor Fiscal e criador da Fluência Contábil. Antes de criar o curso, já tinha uma trajetória sólida ensinando contabilidade pra concurso em formatos diversos — turma presencial, mentoria, conteúdo online.</p>
+        <p class="body-t">A Fluência nasceu da observação de uma constante: alunos que chegavam dizendo <em>"contabilidade é meu ponto fraco"</em> saíam descobrindo que era uma das matérias em que mais tiravam ponto na prova.</p>
+        <div class="prof-num-grid">
+          <div class="prof-num"><strong>3.000+</strong><span>Alunos formados</span></div>
+          <div class="prof-num"><strong>40+</strong><span>Turmas de mentoria</span></div>
+          <div class="prof-num"><strong>400+</strong><span>Horas de aula ao vivo</span></div>
+          <div class="prof-num"><strong>1.000+</strong><span>Questões comentadas</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section id="bonus">
+  <div class="inner">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="lbl" style="display:inline-block;">Ao se inscrever você recebe</span>
+      <div class="bar" style="margin:10px auto 28px;"></div>
+      <h2 class="h2">Mais que as lives.</h2>
+      <p class="body-t">Inscrição gratuita destrava 3 entregas adicionais — sem letra miúda.</p>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-ico">📘</div>
+        <h3>Dicionário Contábil</h3>
+        <p>400+ definições essenciais explicadas com clareza, sem juridiquês. Em PDF, pra você ter sempre por perto.</p>
+        <span class="bonus-meta">Entrega no 1º email</span>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-ico">🎓</div>
+        <h3>Aula 01 — Partidas Dobradas</h3>
+        <p>Aula completa do curso, em PDF. A espinha dorsal de toda a contabilidade — destrava 80% do que vem depois.</p>
+        <span class="bonus-meta">Entrega antes da Live 1</span>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-ico">🔔</div>
+        <h3>Lembretes ao vivo</h3>
+        <p>Aviso 3 dias antes, no dia, e 1h antes de cada live. Você não perde — mesmo no corre da rotina de estudo.</p>
+        <span class="bonus-meta">Pra cada uma das 5 lives</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="inner">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="lbl" style="display:inline-block;">Dúvidas frequentes</span>
+      <div class="bar" style="margin:10px auto 28px;"></div>
+      <h2 class="h2">Antes de você se inscrever.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">As lives são realmente gratuitas?</div>
+        <div class="faq-a">Sim. <strong>100% gratuitas, todas as 5</strong>. Não tem pegadinha, não tem upsell no meio. É a forma da gente apresentar o método antes de qualquer conversa sobre o curso.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Preciso me inscrever pra cada live separadamente?</div>
+        <div class="faq-a">Não. <strong>Uma inscrição cobre todas as 5</strong>. Você recebe lembrete antes de cada uma, com link de acesso direto.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">E se eu não puder assistir ao vivo?</div>
+        <div class="faq-a">Tudo bem. <strong>O replay fica disponível nesta mesma página</strong> após cada live. Mas a Live Final em 18/06 vale especialmente o esforço — algo único acontece ao vivo nessa noite.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Vai abrir algum curso depois?</div>
+        <div class="faq-a">Sim — o curso completo da <strong>Fluência Contábil</strong>. Os detalhes (modalidades, condições, datas) ficam pra Live Final. Quem tá inscrito recebe primeiro.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Pra qual concurso serve?</div>
+        <div class="faq-a">Áreas <strong>fiscal, controle e tribunais de contas</strong> — SEFAZs estaduais, Receita Federal, TCU, TCEs, AFRE, ICMS, ISS. O método também serve pro Exame de Suficiência Contábil.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FUNDO -->
+<section id="cta-fundo">
+  <div class="hero-bg bg-grid" style="opacity:0.5;"></div>
+  <div class="hero-glow" style="left:auto;right:18%;"></div>
+  <div class="inner cta-wrap">
+    <div>
+      <span class="lbl">Último passo</span>
+      <div class="bar"></div>
+      <h2 class="h2 lgt">Aparece nas 5 lives.<br>Sai com método.</h2>
+      <p class="body-t" style="color:rgba(255,255,255,0.65);">Inscrição única, 5 lives gratuitas, replay disponível. Você ainda recebe Dicionário Contábil e Aula 01 do curso, em PDF.</p>
+      <div class="cta-bullets">
+        <div class="cta-bullet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dicionário Contábil em PDF (400+ termos)</div>
+        <div class="cta-bullet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Aula 01 — Partidas Dobradas em PDF</div>
+        <div class="cta-bullet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acesso ao grupo exclusivo das lives no WhatsApp</div>
+        <div class="cta-bullet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lembretes antes de cada live</div>
+      </div>
+    </div>
+    <div class="cta-form-w" id="form-fundo">
+      <div class="form-title">Inscrição gratuita</div>
+      <h3 class="form-h">Quero entrar nas <em>5 lives</em></h3>
+      <form class="lead-form" id="leadFormBot" novalidate>
+        <input type="text" name="nome" id="nome2" placeholder="Seu nome completo" required autocomplete="name">
+        <input type="email" name="email" id="email2" placeholder="Seu melhor e-mail" required autocomplete="email">
+        <input type="tel" name="telefone" id="tel2" placeholder="WhatsApp com DDD (ex: 11 99999-0000)" required autocomplete="tel" inputmode="tel">
+        <div class="form-err" id="err2"></div>
+        <button type="submit">GARANTIR MINHA VAGA</button>
+      </form>
+      <p class="form-legal" style="color:#888;">⚡ Confirmação imediata · 🔒 Sem spam · Cancele quando quiser.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner ft-grid">
+    <div class="ft-col">
+      <div class="ft-logo">
+        <picture><source srcset="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.webp" type="image/webp"><img src="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.png" alt="Fluência Contábil"></picture>
+        <div class="ft-logo-txt"><span class="n1">Fluência Contábil</span><span class="n2">Para quem quer ser fluente</span></div>
+      </div>
+      <p>Contabilidade para quem quer ser fluente. Formação completa para concursos nas áreas fiscal, controle e tribunais de contas e para o Exame de Suficiência Contábil.</p>
+    </div>
+    <div class="ft-col"><h4>Navegação</h4><ul>
+      <li><a href="https://fluenciacontabil.com.br/">Home</a></li>
+      <li><a href="https://fluenciacontabil.com.br/institucional.html">Institucional</a></li>
+      <li><a href="https://fluenciacontabil.com.br/professor.html">Conheça o Professor</a></li>
+      <li><a href="https://fluenciacontabil.com.br/cursos.html">Meus Cursos</a></li>
+      <li><a href="https://fluenciacontabil.com.br/blog.html">Blog</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Comunidade</h4><ul>
+      <li><a href="https://fluenciacontabil.com.br/depoimentos.html">Depoimentos</a></li>
+      <li><a href="https://fluenciacontabil.com.br/contato.html">Fale Conosco</a></li>
+      <li><a href="https://www.youtube.com/@prof.viniciusferraz" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="https://www.instagram.com/prof.viniciusferraz" target="_blank" rel="noopener">Instagram</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Legal</h4><ul>
+      <li><a href="#">Termos de Uso</a></li>
+      <li><a href="#">Política de Privacidade</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom inner">
+    <p>FLUÊNCIA CONTÁBIL · por Vinícius Ferraz · Contabilidade para quem quer ser fluente.</p>
+    <p>© 2026 fluenciacontabil.com.br</p>
+  </div>
+</footer>
+
+<script>
+/* ── Nav scroll state ── */
+var nav=document.getElementById('mainNav'),tb=document.getElementById('topbar');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>60){nav.classList.add('scrolled');if(tb)tb.style.display='none';document.body.style.paddingTop='64px';}
+  else{nav.classList.remove('scrolled');if(tb)tb.style.display='';if(window.innerWidth>768)document.body.style.paddingTop='102px';}
+});
+
+/* ── Estado automático das lives ──
+   Cada card tem data-start (ISO 8601 com timezone -03:00 BR).
+   3 estados:
+     upcoming → "Em breve" (antes do início)
+     live     → "🔴 AO VIVO" + botão "Entrar na live" (entre início e início+2h)
+     replay   → "Replay" + botão "Assistir replay" (após início+2h)
+   Os links de YouTube ficam em window.LIVE_LINKS — preencher quando criar as lives.
+*/
+window.LIVE_LINKS = {
+  // chave = data-live="..."  ·  valor = URL completa do YouTube live/replay
+  '1':     '',  // Live 1 — Débito e Crédito
+  '2':     '',  // Live 2 — 50 CPCs
+  '3':     '',  // Live 3 — CPC 51
+  '4':     '',  // Live 4 — 7 Pegadinhas
+  'final': ''   // Live Final — Lançamento
+};
+var LIVE_DURATION_MS = 2 * 60 * 60 * 1000; // 2 horas após início = ainda "ao vivo"
+
+function renderLiveStatus(){
+  var now = new Date();
+  document.querySelectorAll('.live-card').forEach(function(card){
+    var startStr = card.getAttribute('data-start');
+    var liveKey  = card.getAttribute('data-live');
+    var statusEl = card.querySelector('[data-status]');
+    if (!startStr || !statusEl) return;
+    var start = new Date(startStr);
+    var endLive = new Date(start.getTime() + LIVE_DURATION_MS);
+    var url = (window.LIVE_LINKS[liveKey] || '').trim();
+
+    if (now < start) {
+      // upcoming
+      statusEl.innerHTML = '<span class="status-tag status-upcoming"><span class="status-dot"></span>Em breve</span>';
+      card.classList.remove('is-live');
+    } else if (now >= start && now < endLive) {
+      // ao vivo
+      card.classList.add('is-live');
+      if (url) {
+        statusEl.innerHTML = '<a class="status-tag status-live" href="'+url+'" target="_blank" rel="noopener"><span class="status-dot"></span>AO VIVO · Entrar →</a>';
+      } else {
+        statusEl.innerHTML = '<span class="status-tag status-live"><span class="status-dot"></span>AO VIVO AGORA</span>';
+      }
+    } else {
+      // replay
+      card.classList.remove('is-live');
+      if (url) {
+        statusEl.innerHTML = '<a class="status-tag status-replay" href="'+url+'" target="_blank" rel="noopener"><span class="status-dot"></span>▶ Replay</a>';
+      } else {
+        statusEl.innerHTML = '<span class="status-tag status-replay"><span class="status-dot"></span>Replay em breve</span>';
+      }
+    }
+  });
+}
+renderLiveStatus();
+// Atualiza a cada 60s pra capturar transições upcoming → live → replay sem reload
+setInterval(renderLiveStatus, 60 * 1000);
+
+/* ── UTMs ── */
+function getUTMs(){
+  var p=new URLSearchParams(window.location.search),o={};
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(p.get(k))o[k]=p.get(k);});
+  return o;
+}
+
+/* ── Form: validação + submit ──
+   GSHEET_ENDPOINT → endpoint UNIFICADO Apps Script (mesmo do site principal e Dicionário).
+   Roteia por origem `lives_*` → aba "Lives" da planilha LEADS Fluência Contábil. */
+var GSHEET_ENDPOINT='https://script.google.com/macros/s/AKfycbx8lWrX5F0IByv0JEJ0iBGPjtLto7f2VxDHIh0uT0gZtvoj8EDVx0NFiriou-Dt0cxh/exec';
+
+function onlyDigits(s){var d=(s||'').replace(/\D+/g,'');if(d.length>11&&d.slice(0,2)==='55')d=d.slice(2);return d;}
+
+function validateForm(nome,email,telefone,errEl){
+  errEl.style.display='none';errEl.textContent='';
+  if(!nome||nome.trim().length<3){errEl.textContent='Por favor, informe seu nome completo.';errEl.style.display='block';return false;}
+  var re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!email||!re.test(email)){errEl.textContent='Por favor, informe um e-mail válido.';errEl.style.display='block';return false;}
+  var d=onlyDigits(telefone);
+  if(d.length<10||d.length>11){errEl.textContent='Informe seu WhatsApp com DDD (10 ou 11 dígitos).';errEl.style.display='block';return false;}
+  return true;
+}
+
+function maskPhone(input){
+  input.addEventListener('input',function(){
+    var d=onlyDigits(input.value).slice(0,11);
+    if(d.length<=2){input.value=d;return;}
+    if(d.length<=6){input.value='('+d.slice(0,2)+') '+d.slice(2);return;}
+    if(d.length<=10){input.value='('+d.slice(0,2)+') '+d.slice(2,6)+'-'+d.slice(6);return;}
+    input.value='('+d.slice(0,2)+') '+d.slice(2,7)+'-'+d.slice(7);
+  });
+}
+
+function wireForm(formId,nomeId,emailId,telId,errId,origem){
+  var form=document.getElementById(formId);if(!form)return;
+  var telEl=document.getElementById(telId);if(telEl)maskPhone(telEl);
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var nome=document.getElementById(nomeId).value;
+    var email=document.getElementById(emailId).value;
+    var telefone=telEl?telEl.value:'';
+    var errEl=document.getElementById(errId);
+    if(!validateForm(nome,email,telefone,errEl))return;
+
+    try{if(window.fbq)fbq('track','Lead',{content_name:'Lives_Inscricao'});}catch(e){}
+    try{if(window.gtag)gtag('event','generate_lead',{method:origem||'lives_lp_unica'});}catch(e){}
+
+    var payload=Object.assign({
+      nome:nome.trim(),
+      email:email.trim().toLowerCase(),
+      telefone:telefone.trim(),
+      telefone_digits:onlyDigits(telefone),
+      origem:origem||'lives_form_top',
+      timestamp:new Date().toISOString(),
+      pagina:window.location.pathname+window.location.search,
+      referrer:document.referrer||'',
+      dispositivo:(window.innerWidth<=720)?'Mobile':'Desktop'
+    },getUTMs());
+
+    var btn=form.querySelector('button[type=submit]');
+    if(btn){btn.disabled=true;btn.textContent='Enviando...';}
+
+    if(GSHEET_ENDPOINT){
+      var fd=new FormData();
+      Object.keys(payload).forEach(function(k){fd.append(k,payload[k]);});
+      fetch(GSHEET_ENDPOINT,{method:'POST',body:fd,mode:'no-cors'})
+        .catch(function(){})
+        .finally(function(){window.location.href='obrigado-lives.html';});
+      // Fallback: redireciona após 4s mesmo se a request travar
+      setTimeout(function(){window.location.href='obrigado-lives.html';},4000);
+    } else {
+      window.location.href='obrigado-lives.html';
+    }
+  });
+}
+wireForm('leadFormTop','nome1','email1','tel1','err1','lives_form_top');
+wireForm('leadFormBot','nome2','email2','tel2','err2','lives_form_bottom');
+</script>
+
+</body>
+</html>

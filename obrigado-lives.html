@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Inscrição confirmada — 5 Lives Fluência Contábil</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#1B2A4A;--azul-med:#2A3F6F;--dourado:#C8A84B;--dourado-esc:#A68A3E;--cream:#FBF6E9;--branco:#FFFFFF;--verde:#25D366;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;}
+body{font-family:'Montserrat',sans-serif;background:var(--azul);color:var(--branco);min-height:100vh;display:flex;flex-direction:column;background-image:linear-gradient(rgba(200,168,75,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,0.05) 1px,transparent 1px);background-size:60px 60px;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+header{background:rgba(27,42,74,0.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,75,0.2);padding:18px 5%;display:flex;align-items:center;}
+.logo{display:inline-flex;align-items:center;gap:12px;text-decoration:none;}
+.logo img{height:42px;width:auto;display:block;}
+.logo-txt{display:flex;flex-direction:column;line-height:1.1;}
+.logo-txt .n1{font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--branco);}
+.logo-txt .n2{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--dourado);margin-top:2px;}
+
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 5%;}
+.box{max-width:680px;width:100%;text-align:center;animation:fadeUp 0.5s ease;}
+.lbl{display:inline-block;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--dourado);margin-bottom:14px;}
+.bar{width:44px;height:3px;background:var(--dourado);margin:0 auto 28px;}
+h1{font-size:clamp(28px,4vw,46px);font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:18px;}
+h1 em{font-style:normal;color:var(--dourado);}
+.lead{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.7);font-family:'Source Serif 4',serif;margin-bottom:36px;}
+
+/* CONFIRMAÇÃO */
+.card{background:rgba(200,168,75,0.06);border:1px solid rgba(200,168,75,0.25);border-radius:6px;padding:32px 28px;margin-bottom:24px;text-align:left;}
+.card-status{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dourado);margin-bottom:18px;}
+.check{width:18px;height:18px;color:var(--dourado);}
+.card h2{font-size:20px;font-weight:800;margin-bottom:10px;text-align:center;}
+.card h2 em{font-style:normal;color:var(--dourado);}
+.card-sub{font-size:14px;color:rgba(255,255,255,0.65);font-family:'Source Serif 4',serif;line-height:1.6;text-align:center;margin-bottom:24px;}
+
+/* Mini-agenda das lives na confirmação */
+.mini-agenda{margin-top:8px;}
+.mini-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid rgba(200,168,75,0.12);}
+.mini-row:last-child{border-bottom:none;}
+.mini-num{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(200,168,75,0.18);color:var(--dourado);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.mini-info{flex:1;min-width:0;}
+.mini-date{font-size:9px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,0.5);text-transform:uppercase;}
+.mini-title{font-size:13px;font-weight:600;color:var(--branco);line-height:1.3;margin-top:2px;}
+.mini-row.is-final .mini-num{background:var(--dourado);color:var(--azul);}
+
+/* CARD WHATSAPP */
+.wpp-card{background:linear-gradient(135deg,rgba(37,211,102,0.10) 0%,rgba(200,168,75,0.05) 100%);border:1px solid rgba(37,211,102,0.4);border-radius:6px;padding:32px 28px;margin-bottom:36px;text-align:center;}
+.wpp-card .card-status{color:var(--verde);justify-content:center;display:flex;}
+.wpp-ico{width:56px;height:56px;margin:0 auto 18px;background:var(--verde);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(37,211,102,0.35);}
+.wpp-ico svg{width:32px;height:32px;color:#fff;}
+.wpp-card h2{font-size:22px;line-height:1.3;margin-bottom:12px;}
+.wpp-card p{font-size:14px;color:rgba(255,255,255,0.72);margin-bottom:8px;font-family:'Source Serif 4',serif;line-height:1.65;}
+.wpp-btn{display:inline-flex;align-items:center;gap:12px;background:var(--verde);color:#fff;padding:15px 30px;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-radius:3px;border:2px solid var(--verde);transition:all 0.2s;margin-top:18px;}
+.wpp-btn:hover{background:#1ebe57;border-color:#1ebe57;transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.35);}
+.wpp-btn svg{width:18px;height:18px;}
+
+/* PRÓXIMOS PASSOS */
+.next{margin-top:32px;padding-top:32px;border-top:1px solid rgba(200,168,75,0.12);}
+.next h3{font-size:14px;font-weight:800;letter-spacing:0.5px;margin-bottom:12px;color:var(--branco);}
+.next p{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.55);font-family:'Source Serif 4',serif;}
+
+.socials{margin-top:28px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.social-btn{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border-radius:4px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);text-decoration:none;transition:all 0.25s;min-width:210px;}
+.social-btn:hover{transform:translateY(-3px);background:rgba(255,255,255,0.06);box-shadow:0 10px 28px rgba(0,0,0,0.28);}
+.social-ico{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.social-ico svg{width:22px;height:22px;color:#fff;}
+.social-ico.ig{background:linear-gradient(135deg,#405DE6 0%,#5851DB 12%,#833AB4 24%,#C13584 40%,#E1306C 56%,#FD1D1D 70%,#F56040 84%,#FCAF45 100%);}
+.social-ico.yt{background:#FF0000;}
+.social-txt{display:flex;flex-direction:column;text-align:left;line-height:1.2;}
+.social-net{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+.social-handle{font-size:13px;font-weight:700;color:var(--branco);margin-top:3px;letter-spacing:0.2px;}
+.social-btn:hover .social-handle{color:var(--dourado);}
+
+footer{padding:20px 5%;text-align:center;font-size:11px;color:rgba(255,255,255,0.25);border-top:1px solid rgba(255,255,255,0.05);}
+
+@media(max-width:600px){
+  header{padding:14px 5%;}
+  .socials{flex-direction:column;align-items:center;}
+  .social-btn{width:100%;max-width:260px;}
+  .card,.wpp-card{padding:26px 20px;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://fluenciacontabil.com.br" target="_blank" rel="noopener">
+    <picture><source srcset="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.webp" type="image/webp"><img src="assets/FC_Simbolo_BrancoDourado_FUNDO_AZUL.png" alt="Fluência Contábil"></picture>
+    <div class="logo-txt"><span class="n1">Fluência Contábil</span><span class="n2">Para quem quer ser fluente</span></div>
+  </a>
+</header>
+
+<main>
+  <div class="box">
+    <span class="lbl">Pronto</span>
+    <div class="bar"></div>
+    <h1>Sua <em>vaga está confirmada</em>.</h1>
+    <p class="lead">A inscrição cobre todas as 5 lives. Você vai receber lembrete antes de cada uma — com data, horário e link de acesso direto.</p>
+
+    <!-- Confirmação + agenda -->
+    <div class="card">
+      <div class="card-status" style="display:flex;justify-content:center;">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+        Inscrição confirmada
+      </div>
+      <h2>Sua agenda das <em>5 lives</em></h2>
+      <p class="card-sub">Salve essas datas. Os lembretes chegam por email antes de cada live.</p>
+
+      <div class="mini-agenda">
+        <div class="mini-row">
+          <div class="mini-num">1</div>
+          <div class="mini-info"><div class="mini-date">Quinta · 21/05 · 20h</div><div class="mini-title">Por que você erra Débito e Crédito (e como parar)</div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-num">2</div>
+          <div class="mini-info"><div class="mini-date">Quinta · 28/05 · 20h</div><div class="mini-title">50 CPCs. Banca cobra 5. Quais?</div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-num">3</div>
+          <div class="mini-info"><div class="mini-date">Terça · 02/06 · 20h</div><div class="mini-title">O CPC que matou o CPC 26. Será?</div></div>
+        </div>
+        <div class="mini-row">
+          <div class="mini-num">4</div>
+          <div class="mini-info"><div class="mini-date">Quinta · 11/06 · 20h</div><div class="mini-title">7 pegadinhas que as bancas adoram</div></div>
+        </div>
+        <div class="mini-row is-final">
+          <div class="mini-num">★</div>
+          <div class="mini-info"><div class="mini-date">🚨 Quinta · 18/06 · 20h</div><div class="mini-title">Live Final — Lançamento oficial</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card WhatsApp -->
+    <div class="wpp-card">
+      <div class="card-status">
+        <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+        Próximo passo
+      </div>
+      <div class="wpp-ico">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.15-.174.2-.298.3-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+      </div>
+      <h2>Entra no <em>grupo exclusivo</em> das Lives</h2>
+      <p>É lá que a gente vai aquecer cada uma das 5 lives — com lembretes, materiais extras e tira-dúvida durante a transmissão. Inscritos no grupo aproveitam mais.</p>
+      <a class="wpp-btn" href="https://chat.whatsapp.com/J9IE4RDrJYEFz5fNkzYOCR" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.15-.174.2-.298.3-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+        Entrar no grupo do WhatsApp
+      </a>
+    </div>
+
+    <!-- Próximo: redes -->
+    <div class="next">
+      <h3>Acompanhe também nas redes</h3>
+      <p>Conteúdo curto e prático pra você continuar desenvolvendo fluência em contabilidade no dia a dia, entre uma live e outra.</p>
+      <div class="socials">
+        <a class="social-btn" href="https://www.instagram.com/prof.viniciusferraz" target="_blank" rel="noopener">
+          <span class="social-ico ig"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+          <span class="social-txt">
+            <span class="social-net">Instagram</span>
+            <span class="social-handle">@prof.viniciusferraz</span>
+          </span>
+        </a>
+        <a class="social-btn" href="https://www.youtube.com/@prof.viniciusferraz" target="_blank" rel="noopener">
+          <span class="social-ico yt"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <span class="social-txt">
+            <span class="social-net">YouTube</span>
+            <span class="social-handle">@prof.viniciusferraz</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>© 2026 Fluência Contábil · Prof. Vinícius Ferraz · Contabilidade para quem quer ser fluente</footer>
+
+</body>
+</html>
