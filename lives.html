@@ -19,22 +19,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--azul:#1B2A4A;--azul-med:#2A3F6F;--azul-prof:#0F1A30;--dourado:#C8A84B;--dourado-esc:#A68A3E;--cream:#FBF6E9;--texto:#1A1A1A;--branco:#FFFFFF;--vermelho:#C0392B;--verde:#25D366;}
+:root{--azul:#1B2A4A;--azul-med:#2A3F6F;--azul-prof:#0F1A30;--dourado:#C8A84B;--dourado-esc:#A68A3E;--cream:#FBF6E9;--texto:#1A1A1A;--branco:#FFFFFF;--vermelho:#C0392B;--vermelho-esc:#8B2819;--verde:#25D366;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;color:var(--texto);background:var(--branco);overflow-x:hidden;padding-top:102px;}
 
 /* TOPBAR + NAV */
 #topbar{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--dourado);color:var(--azul);text-align:center;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;}
-#mainNav{position:fixed;top:30px;left:0;right:0;z-index:290;height:72px;background:rgba(27,42,74,0.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,75,0.2);display:flex;align-items:center;padding:0 4%;gap:24px;transition:top 0.3s,box-shadow 0.3s;}
+#mainNav{position:fixed;top:30px;left:0;right:0;z-index:290;height:72px;background:rgba(27,42,74,0.98);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,168,75,0.2);display:flex;align-items:center;padding:0 24px 0 4%;gap:24px;transition:top 0.3s,box-shadow 0.3s;}
 #mainNav.scrolled{top:0;box-shadow:0 4px 24px rgba(0,0,0,0.35);}
 .nav-logo{text-decoration:none;display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .nav-logo img{height:42px;width:auto;display:block;}
 .nav-links{display:flex;align-items:center;gap:2px;list-style:none;flex:1;margin-left:8px;}
 .nav-links a{text-decoration:none;color:rgba(255,255,255,0.65);font-size:11px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;padding:8px 10px;border-radius:2px;transition:all 0.2s;white-space:nowrap;}
 .nav-links a:hover,.nav-links a.active{color:var(--dourado);background:rgba(200,168,75,0.08);}
-.nav-btn{background:var(--dourado);color:var(--azul);padding:10px 18px;border-radius:2px;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;transition:all 0.2s;}
-.nav-btn:hover{background:var(--dourado-esc);color:var(--branco);}
+.nav-btn{background:var(--vermelho);color:var(--branco);padding:11px 22px;border-radius:2px;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;flex-shrink:0;margin-left:auto;transition:all 0.2s;box-shadow:0 4px 14px rgba(192,57,43,0.35);}
+.nav-btn:hover{background:var(--vermelho-esc);transform:translateY(-1px);box-shadow:0 6px 20px rgba(192,57,43,0.5);}
 @media(max-width:900px){.nav-links{display:none;}}
 
 /* COMUNS */
@@ -103,9 +103,9 @@ form.lead-form{display:flex;flex-direction:column;gap:11px;margin-top:18px;}
 form.lead-form input{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:3px;padding:14px 16px;font-size:14px;font-family:'Montserrat',sans-serif;color:var(--branco);transition:all 0.2s;}
 form.lead-form input::placeholder{color:rgba(255,255,255,0.35);}
 form.lead-form input:focus{outline:none;border-color:var(--dourado);background:rgba(200,168,75,0.06);}
-form.lead-form button{margin-top:6px;width:100%;background:var(--dourado);color:var(--azul);padding:16px;font-size:12px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.2s;}
-form.lead-form button:hover{background:var(--dourado-esc);color:var(--branco);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,168,75,0.3);}
-form.lead-form button:disabled{opacity:0.6;cursor:wait;}
+form.lead-form button{margin-top:6px;width:100%;background:var(--vermelho);color:var(--branco);padding:17px;font-size:13px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all 0.2s;box-shadow:0 6px 20px rgba(192,57,43,0.35);}
+form.lead-form button:hover{background:var(--vermelho-esc);transform:translateY(-2px);box-shadow:0 10px 28px rgba(192,57,43,0.5);}
+form.lead-form button:disabled{opacity:0.6;cursor:wait;transform:none;}
 .form-legal{font-size:10px;color:rgba(255,255,255,0.4);text-align:center;margin-top:14px;letter-spacing:0.4px;line-height:1.55;}
 .form-err{display:none;font-size:11px;color:#ff9c8a;padding:8px 12px;background:rgba(255,100,80,0.08);border-left:2px solid #ff9c8a;}
 
@@ -183,7 +183,7 @@ form.lead-form button:disabled{opacity:0.6;cursor:wait;}
 .prof-img-w{position:relative;}
 .prof-img-w img{width:100%;border-radius:6px;display:block;}
 .prof-img-w::after{content:'';position:absolute;inset:0;border-radius:6px;box-shadow:inset 0 0 0 6px rgba(200,168,75,0.18),0 30px 60px rgba(27,42,74,0.18);pointer-events:none;}
-.prof-img-w .prof-tag{position:absolute;left:-14px;top:24px;background:var(--azul);color:var(--branco);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border-radius:2px;border-left:3px solid var(--dourado);}
+.prof-img-w .prof-tag{position:absolute;left:-14px;bottom:28px;background:var(--azul);color:var(--branco);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border-radius:2px;border-left:3px solid var(--dourado);box-shadow:0 8px 20px rgba(27,42,74,0.25);}
 
 .prof-quote{margin:24px 0 28px;padding:18px 24px;background:var(--branco);border-left:3px solid var(--dourado);border-radius:0 4px 4px 0;font-family:'Source Serif 4',serif;font-style:italic;font-size:16px;line-height:1.65;color:#444;}
 .prof-quote strong{color:var(--azul);font-weight:600;font-style:normal;}
@@ -223,11 +223,17 @@ form.lead-form button:disabled{opacity:0.6;cursor:wait;}
 .faq-hd .lbl{margin:0 auto 12px;}
 .faq-hd .bar{margin:0 auto 28px;}
 .faq-list{max-width:820px;margin:0 auto;}
-.faq-item{background:var(--branco);border:1px solid rgba(27,42,74,0.08);border-radius:4px;padding:26px 30px;margin-bottom:14px;transition:border 0.2s;}
+.faq-item{background:var(--branco);border:1px solid rgba(27,42,74,0.08);border-radius:4px;padding:0;margin-bottom:14px;transition:border 0.25s,background 0.25s,box-shadow 0.25s;overflow:hidden;}
 .faq-item:hover{border-color:rgba(200,168,75,0.5);}
-.faq-q{font-size:16px;font-weight:800;color:var(--azul);line-height:1.4;margin-bottom:10px;letter-spacing:-0.2px;}
-.faq-a{font-size:14px;line-height:1.7;color:#555;font-family:'Source Serif 4',serif;}
+.faq-item[open]{border-color:var(--dourado);box-shadow:0 8px 24px rgba(27,42,74,0.06);background:linear-gradient(180deg,#FFFFFF 0%,#FDFBF4 100%);}
+.faq-q{font-size:16px;font-weight:800;color:var(--azul);line-height:1.4;letter-spacing:-0.2px;cursor:pointer;list-style:none;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;user-select:none;transition:color 0.2s;}
+.faq-q::-webkit-details-marker{display:none;}
+.faq-q::after{content:'+';flex-shrink:0;width:32px;height:32px;border-radius:50%;background:rgba(200,168,75,0.14);color:var(--dourado);font-size:22px;font-weight:300;line-height:1;display:flex;align-items:center;justify-content:center;transition:transform 0.3s,background 0.25s,color 0.25s;font-family:'Montserrat',sans-serif;}
+.faq-item[open] .faq-q::after{content:'−';background:var(--dourado);color:var(--azul);transform:rotate(180deg);}
+.faq-q:hover{color:var(--dourado-esc);}
+.faq-a{font-size:14px;line-height:1.75;color:#555;font-family:'Source Serif 4',serif;padding:0 28px 26px;animation:faqOpen 0.35s ease;}
 .faq-a strong{color:var(--azul);}
+@keyframes faqOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 
 /* ═══════════════ CTA FUNDO ═══════════════ */
 #cta-fundo{padding:120px 5%;background:var(--azul);position:relative;overflow:hidden;}
@@ -509,26 +515,26 @@ footer{background:var(--azul-prof);color:rgba(255,255,255,0.65);padding:70px 5% 
     <h2 class="h2">Antes de você se inscrever.</h2>
   </div>
   <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">As lives são realmente gratuitas?</div>
+    <details class="faq-item" open>
+      <summary class="faq-q">As lives são realmente gratuitas?</summary>
       <div class="faq-a">Sim. <strong>100% gratuitas, todas as 5</strong>. Não tem pegadinha, não tem upsell no meio. É a forma da gente apresentar o método antes de qualquer conversa sobre o curso.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Preciso me inscrever pra cada live separadamente?</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Preciso me inscrever pra cada live separadamente?</summary>
       <div class="faq-a">Não. <strong>Uma inscrição cobre todas as 5</strong>. Você recebe lembrete antes de cada uma, com link de acesso direto.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">E se eu não puder assistir ao vivo?</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">E se eu não puder assistir ao vivo?</summary>
       <div class="faq-a">Tudo bem. <strong>O replay fica disponível nesta mesma página</strong> após cada live. Mas a Live Final em 18/06 vale especialmente o esforço — algo único acontece ao vivo nessa noite.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Vai abrir algum curso depois?</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Vai abrir algum curso depois?</summary>
       <div class="faq-a">Sim — o curso completo da <strong>Fluência Contábil</strong>. Os detalhes (modalidades, condições, datas) ficam pra Live Final. Quem tá inscrito recebe primeiro.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Pra qual concurso serve?</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Pra qual concurso serve?</summary>
       <div class="faq-a">Áreas <strong>fiscal, controle e tribunais de contas</strong> — SEFAZs estaduais, Receita Federal, TCU, TCEs, AFRE, ICMS, ISS. O método também serve pro Exame de Suficiência Contábil.</div>
-    </div>
+    </details>
   </div>
 </section>
 
