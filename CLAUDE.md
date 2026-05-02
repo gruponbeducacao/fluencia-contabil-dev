@@ -80,31 +80,45 @@ Substitui os success states de todos os widgets acima:
 https://script.google.com/macros/s/AKfycbx8lWrX5F0IByv0JEJ0iBGPjtLto7f2VxDHIh0uT0gZtvoj8EDVx0NFiriou-Dt0cxh/exec
 ```
 
-Código está na planilha **"LEADS Fluência Contábil"** → Extensões → Apps Script (projeto "Leads Capture — Unified"). O script faz:
-- Validação server-side de email (ignora inválidos)
-- Roteamento por `origem`:
-  - `exit_intent`, `sticky_bar`, `blog_newsletter`, `newsletter` → aba **Newsletter**
-  - `blog_inline_cta`, `lista_espera`, `site_lista_espera` → aba **Lista de Espera**
-  - Fallback: tem nome/whatsapp → Lista; senão → Newsletter
-- Cria abas automaticamente se não existirem
-- Aplica notas (tooltips) nos headers explicando cada coluna
-- Grava data como `new Date()` nativo (permite fórmulas de tempo)
-- `setupDashboard()` — função pra criar/recriar aba "Dashboard" com métricas agregadas e glossário. Executar manualmente quando quiser refresh.
+Código está na planilha **"LEADS Fluência Contábil"** → Extensões → Apps Script (projeto "Leads Capture — Unified"). Versão atual: **v3 — sync MailerLite assíncrono** (refatorado em 02/05/2026 após incidente de timeout).
+
+**Arquitetura v3 (queue/worker):**
+- `doPost` faz só o crítico: valida email + roteia por `origem` + grava na aba certa em <2s. Coluna **`ML Sync`** começa vazia (= pendente).
+- Função separada `syncPendingToMailerLite()` roda em **trigger temporal a cada 1 min** — pega leads pendentes em batch (`ML_BATCH_SIZE = 5` por execução), envia ao MailerLite e marca `ok` ou `err:...`. Usa `LockService` pra evitar concorrência. 5 × 60s timeout máx = 5min < 6min limite Apps Script.
+- Função `setupAfterDeploy()` é **idempotente** — rodar 1× após cada redeploy. Garante colunas ML Sync nas 3 abas e (re)cria o trigger. Logs em "Registro de execução": "✅ Colunas ML Sync garantidas / ✅ Trigger criado".
+- Status `migrated` = lead anterior à v3 (não re-sincronizar pra evitar duplicar). Pra forçar re-sync de um lead específico, **apagar a célula `ML Sync`** — o trigger pega no próximo minuto.
+- Por que esse design: latência transitória do MailerLite (`UrlFetchApp.fetch` tem timeout interno fixo de 60s) NUNCA derruba captura de lead. Fila do Apps Script não acumula.
+
+**Roteamento por `origem`:**
+- `exit_intent`, `sticky_bar`, `blog_newsletter`, `newsletter` → aba **Newsletter** + ML Group Newsletter
+- `blog_inline_cta`, `lista_espera`, `site_lista_espera` → aba **Lista de Espera** + ML Group Lista
+- `dicionario_*` (qualquer prefixo) → aba **Lead Magnet - Dicionário** + ML Group Dicionário
+- Fallback: tem nome/whatsapp → Lista; senão → Newsletter
+
+**Funções de validação (rodar manual no editor):**
+- `testMailerLiteAuth()` — checa API key (HTTP 200)
+- `testNewsletterFlow()` / `testListaFlow()` / `testDicionarioFlow()` — simulam um lead. Devem completar em <3s. O sync com MailerLite acontece via trigger em até 1min (verificar coluna ML Sync depois).
+
+**Pré-requisitos:** API key MailerLite em Script Properties (chave `MAILERLITE_API_KEY`).
 
 **Endpoints antigos** (manter arquivados — não usar):
 - Newsletter velha: `AKfycbzoQxsRFyD-6PjgBkzR8iC2jCQye6OtkdmYtOuXdrkGnlgkh4m-QaNUrAqZL64YoyM_`
 - Lista de Espera velha: `AKfycbxDC5lbaNwmRr6bbR3ECo7WgamNgEJr5MyqkHGiMe2YE07P5PVixf_NY4bIleoZe88Z`
+- LP Dicionário velho (separado): `AKfycbzn...` (substituído pelo unificado em 19/04/2026)
 
 ### Planilha "LEADS Fluência Contábil"
 
 | Aba | Colunas |
 |---|---|
-| **Newsletter** | Data · E-mail · Origem · Ref · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo |
-| **Lista de Espera** | Data · Nome · E-mail · WhatsApp · Origem · Ref · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo |
-| **Lead Magnet - Dicionário** | Data · Nome · E-mail · WhatsApp · Origem · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo |
+| **Newsletter** | Data · E-mail · Origem · Ref · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo · **ML Sync** · **ML Sync At** |
+| **Lista de Espera** | Data · Nome · E-mail · WhatsApp · Origem · Ref · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo · **ML Sync** · **ML Sync At** |
+| **Lead Magnet - Dicionário** | Data · Nome · E-mail · WhatsApp · Origem · Página · Referrer · UTM Source · UTM Medium · UTM Campaign · Dispositivo · **ML Sync** · **ML Sync At** |
 | **Dashboard** | Métricas agregadas via fórmulas (TOTAIS · HOJE · ÚLTIMOS 7 DIAS · POR ORIGEM · POR DISPOSITIVO · TOP UTM · TOP REFERRERS · GLOSSÁRIO) |
+| **`_errors`** | Timestamp · Erro · Parâmetros — log de exceções (auto-criada quando algo falha) |
 
 Todos os headers têm `setNote()` com explicação (mouse hover).
+
+**Coluna `ML Sync`** (adicionada na v3): vazio = pendente, `ok` = sincronizado com MailerLite, `err:...` = falhou (vê o motivo), `migrated` = lead anterior à v3 (não re-syncar pra evitar duplicar). É a fonte de verdade pra debug do sync.
 
 ### Campos de contexto (funil / CRM futuro)
 
@@ -141,9 +155,12 @@ Path local: `C:/Fluência_Contábil_OS_C/_MARKETING/Landing_Pages/Fluencia_LP/di
 - PDF real do dicionário: `Dicionario_Contabil_Fluencia.pdf` (~5.4 MB, é a V2 real do conteúdo, fonte em `C:/Fluência_Contábil_OS_C/_CONTEUDO/Dicionario_Contabil_Fluencia_V2.pdf`)
 - Widgets de captura: exit-intent + sticky bar com copy de lead magnet ("Baixe o Dicionário Contábil grátis"). Submit → redireciona pra `/obrigado.html` (que dispara download do PDF).
 - Endpoint: **unificado** (19/04/2026) — usa o mesmo `AKfycbx8lWrX...` do site principal. Apps Script roteia por `origem` começando com `dicionario_` → aba **"Lead Magnet - Dicionário"** + MailerLite group `185179987559581196`. O endpoint antigo separado (`AKfycbzn...`) está arquivado.
+- **Google Tag Manager** instalado em `index.html` e `obrigado.html` em 02/05/2026 (commit `139f766`). Container ID: **`GTM-WF6P82HX`**. Snippet `<script>` no `<head>` logo após viewport + `<noscript>` imediatamente após `<body>`. Mesmo padrão usado pra qualquer pixel adicional no futuro (Meta, GA4 direto, etc.) — gerenciar tudo via GTM, não acumular snippets no HTML.
 - Origens padronizadas (todas começam com `dicionario_`):
   - `dicionario_form_top` · `dicionario_form_bottom` (forms completos com nome+whatsapp)
   - `dicionario_exit_intent` · `dicionario_sticky_bar` (widgets só email)
+
+**Arquivo legado:** `gsheet_endpoint.gs` na raiz do repo é o código do endpoint **antigo** separado (`AKfycbzn...`, arquivado). Mantido só pra histórico — não reflete o que está em produção. Pode ser removido em qualquer limpeza.
 
 **Quando atualizar o PDF:** basta copiar o `V2.pdf` da pasta `_CONTEUDO` sobrescrevendo `Dicionario_Contabil_Fluencia.pdf` na raiz do repo, `git add/commit/push`. GitHub Pages serve automaticamente.
 
@@ -279,6 +296,9 @@ Card no meio dos posts pra lista de espera. Painel de referral após submit. Int
 ### ✅ Fase 2.5 — Endpoint unificado + CRM básico (em produção)
 Consolidação em 1 planilha com 2 abas + Dashboard com 9 seções de métricas + glossário. Campos de contexto (pagina/referrer/UTM/dispositivo) em todos os submits. Validação server-side.
 
+### ✅ Fase 2.6 — Sync MailerLite assíncrono (em produção, 02/05/2026)
+Refatoração do Apps Script após incidente onde latência transitória do MailerLite fez `doPost` síncrono pendurar (timeouts de 369s = limite máximo Apps Script) e perder ~50% dos leads do dia. Nova arquitetura queue/worker: `doPost` grava em <2s, trigger temporal a cada 1min processa pendentes em batch (5/run, com `LockService`). Coluna `ML Sync` em cada aba é a fonte de verdade. Latência de API externa nunca mais derruba captura de lead. Detalhes na seção "Endpoint unificado (Apps Script)".
+
 ### ⏳ Fase 3a — Integração Hotmart (não iniciada)
 
 **Bloqueio:** produto ainda não criado na Hotmart. Aguardando.
@@ -327,6 +347,8 @@ Saída da Hotmart pra plataforma própria.
 6. **Bottom-sheet no mobile** pro exit-intent (mais natural no polegar).
 7. **Engagement peak** (70% scroll + 4s idle) em vez de scroll-up rápido como proxy de exit-intent no mobile (falso positivo demais).
 8. **Cascata CSS dos posts** sobrescreve cores/paddings dos widgets. Sempre usar `!important` com seletores específicos (ex: `.fc-ec-referral a.fc-ec-wa-group`) pra garantir especificidade 0,2,1+ e vencer `.article-body a` (0,1,1).
+9. **Apps Script: nunca chamar API externa síncrona dentro do `doPost`.** `UrlFetchApp.fetch` tem timeout interno fixo de 60s não-configurável, e Apps Script enfileira execuções concorrentes do Web App. Se a API externa fica lenta, a fila explode e leads vão pro limbo (estouram 6min do limite total). Sempre separar em queue (coluna marker na planilha) + trigger temporal worker. Lição aprendida no incidente de 02/05/2026 que originou a Fase 2.6.
+10. **GTM como camada única de tags** na LP do Dicionário (`GTM-WF6P82HX`). Qualquer pixel/tag novo (Meta, GA4, ads de conversão) entra via GTM, não direto no HTML. Mantém o repo limpo e centraliza configuração.
 
 ---
 
@@ -343,4 +365,4 @@ Saída da Hotmart pra plataforma própria.
 
 ---
 
-*Última atualização: 18/04/2026. Escrito por Claude Opus 4.7 ao final da sessão de construção do sistema de captura de leads + CRM básico.*
+*Última atualização: 02/05/2026 — após incidente de timeout do Apps Script (refatoração v3 com sync assíncrono) + instalação do GTM `GTM-WF6P82HX` na LP do Dicionário. Escrito por Claude Opus 4.7.*
