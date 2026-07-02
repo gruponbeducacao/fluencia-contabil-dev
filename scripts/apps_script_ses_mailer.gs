@@ -34,6 +34,7 @@
  *   TEMPLATE_BASE_URL      = https://fluenciacontabil.com.br/email-templates/  (LEGADO — só usado se TEMPLATE_SOURCE != 's3')
  *   MAILER_ENABLED         = true                 (kill switch — qualquer outro valor bloqueia envio)
  *   MAILER_CUTOVER_AT      = 2026-06-DD           (leads ANTERIORES não entram nas sequências — já passaram pelo MailerLite)
+ *   ENSAIO_EMAIL           = (email NÃO descadastrado usado por ensaioBroadcastBolsao)
  *
  * ─── ORDEM DE ATIVAÇÃO (ver runbook-cutover-mailerlite-ses.md) ────────
  *   1. setupSesInfra()          — cria contact list + topics + config set (1×)
@@ -1184,8 +1185,8 @@ function simularPublicoBroadcast() {
 /**
  * ENSAIO COMPLETO DO MOTOR DE BROADCASTS — 1 clique, evidência em ~1 min.
  *
- * ⚠️ EDITE EMAIL_ENSAIO abaixo antes de rodar (use um email NÃO
- * descadastrado — o que recebeu o B1 serve; o que clicou em
+ * ⚠️ Configure ENSAIO_EMAIL em Script Properties antes de rodar (use um email
+ * NÃO descadastrado — o que recebeu o B1 serve; o que clicou em
  * "Descadastrar" NÃO serve, o SES vai suprimir).
  *
  * O que faz, na ordem, pelo caminho REAL de produção:
@@ -1196,10 +1197,12 @@ function simularPublicoBroadcast() {
  *   5. Loga o resultado e como limpar
  */
 function ensaioBroadcastBolsao() {
-  var EMAIL_ENSAIO = 'vfneves94@gmail.com'; // email de ensaio validado em 11/06 (não descadastrado)
+  // Email de ensaio vem de Script Properties (ENSAIO_EMAIL) pra não expor
+  // endereço pessoal neste repositório público. Use um email NÃO descadastrado.
+  var EMAIL_ENSAIO = PropertiesService.getScriptProperties().getProperty('ENSAIO_EMAIL') || '';
 
   if (EMAIL_ENSAIO.indexOf('@') === -1) {
-    Logger.log('❌ Edite a variável EMAIL_ENSAIO no topo da função antes de rodar.');
+    Logger.log('❌ Configure ENSAIO_EMAIL em Script Properties antes de rodar o ensaio.');
     return;
   }
   if (PropertiesService.getScriptProperties().getProperty('MAILER_ENABLED') !== 'true') {
